@@ -14,10 +14,6 @@
 
 <br/>
 
-## 📸 Sneak Peek
-<p align="center">
-  <img src="./assets/Preview_Klps.png" alt="KLPS Pangire App Preview" width="800" style="border-radius: 12px;"/>
-</p>
 
 ## ✨ Features
 
