@@ -1,0 +1,4324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="google" content="notranslate" />
+<title>Word Drop - KLPS Pangire (A)</title>
+
+
+
+
+
+
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+      <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+
+<!-- Header Section (TopAppBar Identity) -->
+<header class="w-full top-0 px-container-margin py-4 bg-surface-container-low border-b-4 border-surface-variant shadow-[0_4px_0_0_rgba(221,228,230,1)] sticky z-50">
+<div class="flex justify-between items-center w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
+<h1 class="font-display-lg-mobile text-headline-md md:text-display-lg-mobile truncate bg-gradient-to-r from-primary to-primary-container text-transparent bg-clip-text drop-shadow-sm">KLPS Pangire (A)</h1>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div id="stars-display" class="text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined">star</span>
+                    125
+                </div>
+<!-- Mini Progress -->
+<div class="w-32 h-4 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container progress-candy-stripe w-[60%]"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-container-margin py-8">
+<!-- Level Selector / Progression Logic -->
+<section class="mb-12">
+<div class="bg-surface-container-highest p-2 rounded-lg flex gap-2 bubbly-shadow mb-6">
+<button id="btn-class1" class="flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold bg-primary-container text-on-primary-container inner-glow transition-all">
+                    <span id="level-title">Easy</span> <span id="level-subtitle" class="block text-xs opacity-80">0/20 Sentences</span>
+</button>
+<button id="btn-class2" class="flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold text-on-surface-variant transition-all">
+                    Medium <span class="block text-xs opacity-80">Locked</span>
+</button>
+<button id="btn-class3" class="flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold text-on-surface-variant transition-all">
+                    Hard <span class="block text-xs opacity-80">Locked</span>
+</button>
+</div>
+<!-- Progression Map (Visual) -->
+<div class="flex items-center justify-center gap-4 px-4">
+<div id="prog-circle-easy" class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold bubbly-shadow">1</div>
+<div id="prog-line-1" class="h-2 flex-1 bg-primary-container rounded-full progress-candy-stripe"></div>
+<div id="prog-circle-medium" class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold border-2 border-outline-variant">2</div>
+<div id="prog-line-2" class="h-2 flex-1 bg-surface-variant rounded-full"></div>
+<div id="prog-circle-hard" class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold border-2 border-outline-variant">3</div>
+</div>
+</section>
+<!-- Game Area Card -->
+<section class="bg-white rounded-lg bubbly-card p-8 md:p-12 text-center relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary-container opacity-10 rounded-full blur-3xl"></div>
+<!-- Illustration Area -->
+<div class="mb-8 flex justify-center">
+<div id="subject-image-container" class="w-28 h-28 md:w-36 md:h-36 bg-surface-container-low rounded-xl bubbly-shadow overflow-hidden border-4 border-white flex items-center justify-center text-[70px] md:text-[90px] select-none animate-float">
+</div>
+</div>
+<!-- Sentence Area -->
+<div class="mb-12">
+<p id="sentence-container" class="font-headline-md text-headline-md-mobile text-on-background leading-relaxed text-center">
+                </p>
+</div>
+<!-- Word Drops (Options) -->
+<div id="options-container" class="flex flex-wrap justify-center gap-6">
+</div>
+</section>
+</main>
+
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-1 pt-1 bg-white border-t-4 border-surface-variant">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary group" href="learning_path.html" >
+<div class="px-4 py-0.5 bg-primary-container rounded-full mb-0 border-2 border-primary/20 transition-transform group-active:scale-95">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<span class="font-bold text-[10px]">Home</span>
+</a>
+
+<!-- Progress -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant group transition-colors" href="progress.html" >
+<div class="px-4 py-0.5 rounded-full mb-0 transition-all group-active:scale-95">
+<span class="material-symbols-outlined text-xl">leaderboard</span>
+</div>
+<span class="font-bold text-[10px]">Progress</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant group transition-colors" href="profile.html" >
+<div class="px-4 py-0.5 rounded-full mb-0 transition-all group-active:scale-95">
+<span class="material-symbols-outlined text-xl">person</span>
+</div>
+
+<span class="font-bold text-[10px]">Profile</span>
+</a>
+</nav>
+
+
+
+  <script>
+
+
+const SENTENCE_BANK = {
+  "1": {
+    "easy": [
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "in",
+          "under",
+          "above"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "over",
+          "in",
+          "under"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "fast",
+          "red",
+          "loud"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walks",
+          "walked",
+          "walking"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "to",
+          "two",
+          "too"
+        ],
+        "emoji": "🐕"
+      },
+      {
+        "parts": [
+          "The sun is very ",
+          "."
+        ],
+        "correct": "hot",
+        "options": [
+          "blue",
+          "cold",
+          "hot"
+        ],
+        "emoji": "☀️"
+      },
+      {
+        "parts": [
+          "Look ",
+          " the beautiful sky!"
+        ],
+        "correct": "at",
+        "options": [
+          "at",
+          "on",
+          "in"
+        ],
+        "emoji": "☁️"
+      },
+      {
+        "parts": [
+          "A fish lives ",
+          " the water."
+        ],
+        "correct": "in",
+        "options": [
+          "above",
+          "on",
+          "in"
+        ],
+        "emoji": "🐟"
+      },
+      {
+        "parts": [
+          "We ",
+          " playing a game."
+        ],
+        "correct": "are",
+        "options": [
+          "is",
+          "are",
+          "am"
+        ],
+        "emoji": "🎮"
+      },
+      {
+        "parts": [
+          "That is ",
+          " book."
+        ],
+        "correct": "my",
+        "options": [
+          "me",
+          "my",
+          "I"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "The mouse ran ",
+          " the hole."
+        ],
+        "correct": "into",
+        "options": [
+          "onto",
+          "into",
+          "under"
+        ],
+        "emoji": "🐭"
+      },
+      {
+        "parts": [
+          "She ",
+          " a song gracefully."
+        ],
+        "correct": "sings",
+        "options": [
+          "singing",
+          "sings",
+          "sung"
+        ],
+        "emoji": "🎵"
+      },
+      {
+        "parts": [
+          "He is ",
+          " than me."
+        ],
+        "correct": "taller",
+        "options": [
+          "tallest",
+          "tall",
+          "taller"
+        ],
+        "emoji": "📏"
+      },
+      {
+        "parts": [
+          "The car drives ",
+          "."
+        ],
+        "correct": "fast",
+        "options": [
+          "slows",
+          "quick",
+          "fast"
+        ],
+        "emoji": "🚗"
+      },
+      {
+        "parts": [
+          "They ",
+          " happy today."
+        ],
+        "correct": "are",
+        "options": [
+          "be",
+          "is",
+          "are"
+        ],
+        "emoji": "😊"
+      },
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "under",
+          "above",
+          "in"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "under",
+          "in",
+          "over"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "red",
+          "fast"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walked",
+          "walks",
+          "walking"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "too",
+          "two",
+          "to"
+        ],
+        "emoji": "🐕"
+      }
+    ],
+    "medium": [
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "so",
+          "because",
+          "but"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beauty",
+          "beautiful",
+          "beautifully"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finish",
+          "finished",
+          "finishes"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "for",
+          "with",
+          "by"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "will",
+          "do",
+          "are"
+        ],
+        "emoji": "☔"
+      },
+      {
+        "parts": [
+          "Neither John ",
+          " Mary could come."
+        ],
+        "correct": "nor",
+        "options": [
+          "or",
+          "nor",
+          "and"
+        ],
+        "emoji": "👫"
+      },
+      {
+        "parts": [
+          "He has been waiting ",
+          " two hours."
+        ],
+        "correct": "for",
+        "options": [
+          "since",
+          "for",
+          "until"
+        ],
+        "emoji": "⏳"
+      },
+      {
+        "parts": [
+          "This puzzle is ",
+          " difficult than the last one."
+        ],
+        "correct": "more",
+        "options": [
+          "much",
+          "more",
+          "most"
+        ],
+        "emoji": "🧩"
+      },
+      {
+        "parts": [
+          "I will call you as ",
+          " as I arrive."
+        ],
+        "correct": "soon",
+        "options": [
+          "soon",
+          "long",
+          "quick"
+        ],
+        "emoji": "📱"
+      },
+      {
+        "parts": [
+          "The book, ",
+          " was on the table, is mine."
+        ],
+        "correct": "which",
+        "options": [
+          "which",
+          "who",
+          "where"
+        ],
+        "emoji": "📘"
+      },
+      {
+        "parts": [
+          "Please speak ",
+          " so everyone can hear."
+        ],
+        "correct": "loudly",
+        "options": [
+          "loud",
+          "loudly",
+          "loudness"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "He walked ",
+          " the dark tunnel."
+        ],
+        "correct": "through",
+        "options": [
+          "between",
+          "over",
+          "through"
+        ],
+        "emoji": "🚇"
+      },
+      {
+        "parts": [
+          "I can't find my keys ",
+          "."
+        ],
+        "correct": "anywhere",
+        "options": [
+          "somewhere",
+          "nowhere",
+          "anywhere"
+        ],
+        "emoji": "🔑"
+      },
+      {
+        "parts": [
+          "They played football ",
+          " the rain."
+        ],
+        "correct": "despite",
+        "options": [
+          "despite",
+          "although",
+          "even"
+        ],
+        "emoji": "⚽"
+      },
+      {
+        "parts": [
+          "She is the ",
+          " student in the class."
+        ],
+        "correct": "smartest",
+        "options": [
+          "smartest",
+          "smart",
+          "smarter"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautifully",
+          "beauty",
+          "beautiful"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finishes",
+          "finish",
+          "finished"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "by",
+          "for",
+          "with"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "do",
+          "are",
+          "will"
+        ],
+        "emoji": "☔"
+      }
+    ],
+    "hard": [
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "what",
+          "how",
+          "though"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "then",
+          "than",
+          "when"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "unrelevant",
+          "irrelevant",
+          "inrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "will have",
+          "will",
+          "have"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "with",
+          "for",
+          "to"
+        ],
+        "emoji": "🌅"
+      },
+      {
+        "parts": [
+          "The committee ",
+          " reached a decision."
+        ],
+        "correct": "has",
+        "options": [
+          "are",
+          "have",
+          "has"
+        ],
+        "emoji": "⚖️"
+      },
+      {
+        "parts": [
+          "She was completely ",
+          " in her reading."
+        ],
+        "correct": "absorbed",
+        "options": [
+          "absorbs",
+          "absorbing",
+          "absorbed"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "It is essential that he ",
+          " present."
+        ],
+        "correct": "be",
+        "options": [
+          "be",
+          "is",
+          "was"
+        ],
+        "emoji": "❗"
+      },
+      {
+        "parts": [
+          "Not only did he win, ",
+          " he broke the record."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "and",
+          "also"
+        ],
+        "emoji": "🏆"
+      },
+      {
+        "parts": [
+          "The medicine alleviated the symptoms ",
+          "."
+        ],
+        "correct": "temporarily",
+        "options": [
+          "temporarily",
+          "temporary",
+          "temporal"
+        ],
+        "emoji": "💊"
+      },
+      {
+        "parts": [
+          "The politician's speech was full of ",
+          "."
+        ],
+        "correct": "rhetoric",
+        "options": [
+          "rethoric",
+          "rhetoric",
+          "rhethoric"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "They were averse ",
+          " taking any risks."
+        ],
+        "correct": "to",
+        "options": [
+          "for",
+          "from",
+          "to"
+        ],
+        "emoji": "⚠️"
+      },
+      {
+        "parts": [
+          "His explanation was somewhat ",
+          "."
+        ],
+        "correct": "ambiguous",
+        "options": [
+          "ambiguous",
+          "ambidextrous",
+          "ambient"
+        ],
+        "emoji": "❓"
+      },
+      {
+        "parts": [
+          "We must comply ",
+          " the regulations."
+        ],
+        "correct": "with",
+        "options": [
+          "with",
+          "to",
+          "for"
+        ],
+        "emoji": "📜"
+      },
+      {
+        "parts": [
+          "The phenomenon is difficult to ",
+          "."
+        ],
+        "correct": "comprehend",
+        "options": [
+          "comprehend",
+          "comprehensive",
+          "apprehend"
+        ],
+        "emoji": "🌌"
+      },
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "what",
+          "how",
+          "though"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "than",
+          "when",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "irrelevant",
+          "unrelevant",
+          "inrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "will",
+          "have",
+          "will have"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "with",
+          "for",
+          "to"
+        ],
+        "emoji": "🌅"
+      }
+    ]
+  },
+  "2": {
+    "easy": [
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "under",
+          "above",
+          "in"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "under",
+          "in",
+          "over"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "fast",
+          "red"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walking",
+          "walks",
+          "walked"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "two",
+          "too",
+          "to"
+        ],
+        "emoji": "🐕"
+      },
+      {
+        "parts": [
+          "The sun is very ",
+          "."
+        ],
+        "correct": "hot",
+        "options": [
+          "cold",
+          "hot",
+          "blue"
+        ],
+        "emoji": "☀️"
+      },
+      {
+        "parts": [
+          "Look ",
+          " the beautiful sky!"
+        ],
+        "correct": "at",
+        "options": [
+          "at",
+          "on",
+          "in"
+        ],
+        "emoji": "☁️"
+      },
+      {
+        "parts": [
+          "A fish lives ",
+          " the water."
+        ],
+        "correct": "in",
+        "options": [
+          "above",
+          "in",
+          "on"
+        ],
+        "emoji": "🐟"
+      },
+      {
+        "parts": [
+          "We ",
+          " playing a game."
+        ],
+        "correct": "are",
+        "options": [
+          "are",
+          "am",
+          "is"
+        ],
+        "emoji": "🎮"
+      },
+      {
+        "parts": [
+          "That is ",
+          " book."
+        ],
+        "correct": "my",
+        "options": [
+          "I",
+          "me",
+          "my"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "The mouse ran ",
+          " the hole."
+        ],
+        "correct": "into",
+        "options": [
+          "onto",
+          "into",
+          "under"
+        ],
+        "emoji": "🐭"
+      },
+      {
+        "parts": [
+          "She ",
+          " a song gracefully."
+        ],
+        "correct": "sings",
+        "options": [
+          "sung",
+          "singing",
+          "sings"
+        ],
+        "emoji": "🎵"
+      },
+      {
+        "parts": [
+          "He is ",
+          " than me."
+        ],
+        "correct": "taller",
+        "options": [
+          "tall",
+          "taller",
+          "tallest"
+        ],
+        "emoji": "📏"
+      },
+      {
+        "parts": [
+          "The car drives ",
+          "."
+        ],
+        "correct": "fast",
+        "options": [
+          "quick",
+          "fast",
+          "slows"
+        ],
+        "emoji": "🚗"
+      },
+      {
+        "parts": [
+          "They ",
+          " happy today."
+        ],
+        "correct": "are",
+        "options": [
+          "are",
+          "is",
+          "be"
+        ],
+        "emoji": "😊"
+      },
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "in",
+          "above",
+          "under"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "over",
+          "under",
+          "in"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "fast",
+          "red"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walked",
+          "walks",
+          "walking"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "two",
+          "too",
+          "to"
+        ],
+        "emoji": "🐕"
+      }
+    ],
+    "medium": [
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautiful",
+          "beauty",
+          "beautifully"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finished",
+          "finish",
+          "finishes"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "with",
+          "for",
+          "by"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "are",
+          "do",
+          "will"
+        ],
+        "emoji": "☔"
+      },
+      {
+        "parts": [
+          "Neither John ",
+          " Mary could come."
+        ],
+        "correct": "nor",
+        "options": [
+          "nor",
+          "and",
+          "or"
+        ],
+        "emoji": "👫"
+      },
+      {
+        "parts": [
+          "He has been waiting ",
+          " two hours."
+        ],
+        "correct": "for",
+        "options": [
+          "for",
+          "since",
+          "until"
+        ],
+        "emoji": "⏳"
+      },
+      {
+        "parts": [
+          "This puzzle is ",
+          " difficult than the last one."
+        ],
+        "correct": "more",
+        "options": [
+          "most",
+          "much",
+          "more"
+        ],
+        "emoji": "🧩"
+      },
+      {
+        "parts": [
+          "I will call you as ",
+          " as I arrive."
+        ],
+        "correct": "soon",
+        "options": [
+          "long",
+          "quick",
+          "soon"
+        ],
+        "emoji": "📱"
+      },
+      {
+        "parts": [
+          "The book, ",
+          " was on the table, is mine."
+        ],
+        "correct": "which",
+        "options": [
+          "which",
+          "who",
+          "where"
+        ],
+        "emoji": "📘"
+      },
+      {
+        "parts": [
+          "Please speak ",
+          " so everyone can hear."
+        ],
+        "correct": "loudly",
+        "options": [
+          "loudly",
+          "loud",
+          "loudness"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "He walked ",
+          " the dark tunnel."
+        ],
+        "correct": "through",
+        "options": [
+          "between",
+          "over",
+          "through"
+        ],
+        "emoji": "🚇"
+      },
+      {
+        "parts": [
+          "I can't find my keys ",
+          "."
+        ],
+        "correct": "anywhere",
+        "options": [
+          "anywhere",
+          "nowhere",
+          "somewhere"
+        ],
+        "emoji": "🔑"
+      },
+      {
+        "parts": [
+          "They played football ",
+          " the rain."
+        ],
+        "correct": "despite",
+        "options": [
+          "despite",
+          "even",
+          "although"
+        ],
+        "emoji": "⚽"
+      },
+      {
+        "parts": [
+          "She is the ",
+          " student in the class."
+        ],
+        "correct": "smartest",
+        "options": [
+          "smart",
+          "smarter",
+          "smartest"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "because",
+          "so",
+          "but"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beauty",
+          "beautifully",
+          "beautiful"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finishes",
+          "finish",
+          "finished"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "by",
+          "for",
+          "with"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "are",
+          "will",
+          "do"
+        ],
+        "emoji": "☔"
+      }
+    ],
+    "hard": [
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "how",
+          "though",
+          "what"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "when",
+          "than",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "inrelevant",
+          "unrelevant",
+          "irrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "will",
+          "have",
+          "will have"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "with",
+          "to",
+          "for"
+        ],
+        "emoji": "🌅"
+      },
+      {
+        "parts": [
+          "The committee ",
+          " reached a decision."
+        ],
+        "correct": "has",
+        "options": [
+          "have",
+          "has",
+          "are"
+        ],
+        "emoji": "⚖️"
+      },
+      {
+        "parts": [
+          "She was completely ",
+          " in her reading."
+        ],
+        "correct": "absorbed",
+        "options": [
+          "absorbing",
+          "absorbs",
+          "absorbed"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "It is essential that he ",
+          " present."
+        ],
+        "correct": "be",
+        "options": [
+          "was",
+          "is",
+          "be"
+        ],
+        "emoji": "❗"
+      },
+      {
+        "parts": [
+          "Not only did he win, ",
+          " he broke the record."
+        ],
+        "correct": "but",
+        "options": [
+          "also",
+          "and",
+          "but"
+        ],
+        "emoji": "🏆"
+      },
+      {
+        "parts": [
+          "The medicine alleviated the symptoms ",
+          "."
+        ],
+        "correct": "temporarily",
+        "options": [
+          "temporarily",
+          "temporary",
+          "temporal"
+        ],
+        "emoji": "💊"
+      },
+      {
+        "parts": [
+          "The politician's speech was full of ",
+          "."
+        ],
+        "correct": "rhetoric",
+        "options": [
+          "rhetoric",
+          "rethoric",
+          "rhethoric"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "They were averse ",
+          " taking any risks."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "from",
+          "for"
+        ],
+        "emoji": "⚠️"
+      },
+      {
+        "parts": [
+          "His explanation was somewhat ",
+          "."
+        ],
+        "correct": "ambiguous",
+        "options": [
+          "ambidextrous",
+          "ambiguous",
+          "ambient"
+        ],
+        "emoji": "❓"
+      },
+      {
+        "parts": [
+          "We must comply ",
+          " the regulations."
+        ],
+        "correct": "with",
+        "options": [
+          "with",
+          "to",
+          "for"
+        ],
+        "emoji": "📜"
+      },
+      {
+        "parts": [
+          "The phenomenon is difficult to ",
+          "."
+        ],
+        "correct": "comprehend",
+        "options": [
+          "comprehensive",
+          "comprehend",
+          "apprehend"
+        ],
+        "emoji": "🌌"
+      },
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "how",
+          "though",
+          "what"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "then",
+          "than",
+          "when"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "irrelevant",
+          "unrelevant",
+          "inrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "have",
+          "will have",
+          "will"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "for",
+          "to",
+          "with"
+        ],
+        "emoji": "🌅"
+      }
+    ]
+  },
+  "3": {
+    "easy": [
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "in",
+          "above",
+          "under"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "over",
+          "in",
+          "under"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "red",
+          "fast"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walking",
+          "walked",
+          "walks"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "to",
+          "too",
+          "two"
+        ],
+        "emoji": "🐕"
+      },
+      {
+        "parts": [
+          "The sun is very ",
+          "."
+        ],
+        "correct": "hot",
+        "options": [
+          "hot",
+          "cold",
+          "blue"
+        ],
+        "emoji": "☀️"
+      },
+      {
+        "parts": [
+          "Look ",
+          " the beautiful sky!"
+        ],
+        "correct": "at",
+        "options": [
+          "on",
+          "at",
+          "in"
+        ],
+        "emoji": "☁️"
+      },
+      {
+        "parts": [
+          "A fish lives ",
+          " the water."
+        ],
+        "correct": "in",
+        "options": [
+          "above",
+          "on",
+          "in"
+        ],
+        "emoji": "🐟"
+      },
+      {
+        "parts": [
+          "We ",
+          " playing a game."
+        ],
+        "correct": "are",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "emoji": "🎮"
+      },
+      {
+        "parts": [
+          "That is ",
+          " book."
+        ],
+        "correct": "my",
+        "options": [
+          "my",
+          "me",
+          "I"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "The mouse ran ",
+          " the hole."
+        ],
+        "correct": "into",
+        "options": [
+          "onto",
+          "into",
+          "under"
+        ],
+        "emoji": "🐭"
+      },
+      {
+        "parts": [
+          "She ",
+          " a song gracefully."
+        ],
+        "correct": "sings",
+        "options": [
+          "sings",
+          "sung",
+          "singing"
+        ],
+        "emoji": "🎵"
+      },
+      {
+        "parts": [
+          "He is ",
+          " than me."
+        ],
+        "correct": "taller",
+        "options": [
+          "taller",
+          "tall",
+          "tallest"
+        ],
+        "emoji": "📏"
+      },
+      {
+        "parts": [
+          "The car drives ",
+          "."
+        ],
+        "correct": "fast",
+        "options": [
+          "slows",
+          "quick",
+          "fast"
+        ],
+        "emoji": "🚗"
+      },
+      {
+        "parts": [
+          "They ",
+          " happy today."
+        ],
+        "correct": "are",
+        "options": [
+          "are",
+          "be",
+          "is"
+        ],
+        "emoji": "😊"
+      },
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "above",
+          "under",
+          "in"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "over",
+          "in",
+          "under"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "red",
+          "fast"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walked",
+          "walking",
+          "walks"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "two",
+          "too",
+          "to"
+        ],
+        "emoji": "🐕"
+      }
+    ],
+    "medium": [
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautiful",
+          "beautifully",
+          "beauty"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finished",
+          "finish",
+          "finishes"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "with",
+          "for",
+          "by"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "will",
+          "do",
+          "are"
+        ],
+        "emoji": "☔"
+      },
+      {
+        "parts": [
+          "Neither John ",
+          " Mary could come."
+        ],
+        "correct": "nor",
+        "options": [
+          "and",
+          "or",
+          "nor"
+        ],
+        "emoji": "👫"
+      },
+      {
+        "parts": [
+          "He has been waiting ",
+          " two hours."
+        ],
+        "correct": "for",
+        "options": [
+          "until",
+          "for",
+          "since"
+        ],
+        "emoji": "⏳"
+      },
+      {
+        "parts": [
+          "This puzzle is ",
+          " difficult than the last one."
+        ],
+        "correct": "more",
+        "options": [
+          "more",
+          "most",
+          "much"
+        ],
+        "emoji": "🧩"
+      },
+      {
+        "parts": [
+          "I will call you as ",
+          " as I arrive."
+        ],
+        "correct": "soon",
+        "options": [
+          "soon",
+          "quick",
+          "long"
+        ],
+        "emoji": "📱"
+      },
+      {
+        "parts": [
+          "The book, ",
+          " was on the table, is mine."
+        ],
+        "correct": "which",
+        "options": [
+          "which",
+          "who",
+          "where"
+        ],
+        "emoji": "📘"
+      },
+      {
+        "parts": [
+          "Please speak ",
+          " so everyone can hear."
+        ],
+        "correct": "loudly",
+        "options": [
+          "loudly",
+          "loudness",
+          "loud"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "He walked ",
+          " the dark tunnel."
+        ],
+        "correct": "through",
+        "options": [
+          "through",
+          "over",
+          "between"
+        ],
+        "emoji": "🚇"
+      },
+      {
+        "parts": [
+          "I can't find my keys ",
+          "."
+        ],
+        "correct": "anywhere",
+        "options": [
+          "anywhere",
+          "somewhere",
+          "nowhere"
+        ],
+        "emoji": "🔑"
+      },
+      {
+        "parts": [
+          "They played football ",
+          " the rain."
+        ],
+        "correct": "despite",
+        "options": [
+          "even",
+          "although",
+          "despite"
+        ],
+        "emoji": "⚽"
+      },
+      {
+        "parts": [
+          "She is the ",
+          " student in the class."
+        ],
+        "correct": "smartest",
+        "options": [
+          "smartest",
+          "smarter",
+          "smart"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beauty",
+          "beautiful",
+          "beautifully"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finishes",
+          "finish",
+          "finished"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "with",
+          "for",
+          "by"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "will",
+          "do",
+          "are"
+        ],
+        "emoji": "☔"
+      }
+    ],
+    "hard": [
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "what",
+          "how",
+          "though"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "then",
+          "than",
+          "when"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "unrelevant",
+          "irrelevant",
+          "inrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "will",
+          "will have",
+          "have"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "with",
+          "for"
+        ],
+        "emoji": "🌅"
+      },
+      {
+        "parts": [
+          "The committee ",
+          " reached a decision."
+        ],
+        "correct": "has",
+        "options": [
+          "have",
+          "are",
+          "has"
+        ],
+        "emoji": "⚖️"
+      },
+      {
+        "parts": [
+          "She was completely ",
+          " in her reading."
+        ],
+        "correct": "absorbed",
+        "options": [
+          "absorbing",
+          "absorbs",
+          "absorbed"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "It is essential that he ",
+          " present."
+        ],
+        "correct": "be",
+        "options": [
+          "is",
+          "was",
+          "be"
+        ],
+        "emoji": "❗"
+      },
+      {
+        "parts": [
+          "Not only did he win, ",
+          " he broke the record."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "and",
+          "also"
+        ],
+        "emoji": "🏆"
+      },
+      {
+        "parts": [
+          "The medicine alleviated the symptoms ",
+          "."
+        ],
+        "correct": "temporarily",
+        "options": [
+          "temporal",
+          "temporary",
+          "temporarily"
+        ],
+        "emoji": "💊"
+      },
+      {
+        "parts": [
+          "The politician's speech was full of ",
+          "."
+        ],
+        "correct": "rhetoric",
+        "options": [
+          "rhetoric",
+          "rhethoric",
+          "rethoric"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "They were averse ",
+          " taking any risks."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "from",
+          "for"
+        ],
+        "emoji": "⚠️"
+      },
+      {
+        "parts": [
+          "His explanation was somewhat ",
+          "."
+        ],
+        "correct": "ambiguous",
+        "options": [
+          "ambidextrous",
+          "ambiguous",
+          "ambient"
+        ],
+        "emoji": "❓"
+      },
+      {
+        "parts": [
+          "We must comply ",
+          " the regulations."
+        ],
+        "correct": "with",
+        "options": [
+          "for",
+          "to",
+          "with"
+        ],
+        "emoji": "📜"
+      },
+      {
+        "parts": [
+          "The phenomenon is difficult to ",
+          "."
+        ],
+        "correct": "comprehend",
+        "options": [
+          "apprehend",
+          "comprehensive",
+          "comprehend"
+        ],
+        "emoji": "🌌"
+      },
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "what",
+          "how",
+          "though"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "than",
+          "when",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "inrelevant",
+          "irrelevant",
+          "unrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "have",
+          "will have",
+          "will"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "for",
+          "with"
+        ],
+        "emoji": "🌅"
+      }
+    ]
+  },
+  "4": {
+    "easy": [
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "above",
+          "in",
+          "under"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "over",
+          "in",
+          "under"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "fast",
+          "red"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walked",
+          "walks",
+          "walking"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "to",
+          "too",
+          "two"
+        ],
+        "emoji": "🐕"
+      },
+      {
+        "parts": [
+          "The sun is very ",
+          "."
+        ],
+        "correct": "hot",
+        "options": [
+          "hot",
+          "cold",
+          "blue"
+        ],
+        "emoji": "☀️"
+      },
+      {
+        "parts": [
+          "Look ",
+          " the beautiful sky!"
+        ],
+        "correct": "at",
+        "options": [
+          "at",
+          "on",
+          "in"
+        ],
+        "emoji": "☁️"
+      },
+      {
+        "parts": [
+          "A fish lives ",
+          " the water."
+        ],
+        "correct": "in",
+        "options": [
+          "above",
+          "on",
+          "in"
+        ],
+        "emoji": "🐟"
+      },
+      {
+        "parts": [
+          "We ",
+          " playing a game."
+        ],
+        "correct": "are",
+        "options": [
+          "are",
+          "is",
+          "am"
+        ],
+        "emoji": "🎮"
+      },
+      {
+        "parts": [
+          "That is ",
+          " book."
+        ],
+        "correct": "my",
+        "options": [
+          "I",
+          "me",
+          "my"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "The mouse ran ",
+          " the hole."
+        ],
+        "correct": "into",
+        "options": [
+          "under",
+          "onto",
+          "into"
+        ],
+        "emoji": "🐭"
+      },
+      {
+        "parts": [
+          "She ",
+          " a song gracefully."
+        ],
+        "correct": "sings",
+        "options": [
+          "sung",
+          "singing",
+          "sings"
+        ],
+        "emoji": "🎵"
+      },
+      {
+        "parts": [
+          "He is ",
+          " than me."
+        ],
+        "correct": "taller",
+        "options": [
+          "tallest",
+          "tall",
+          "taller"
+        ],
+        "emoji": "📏"
+      },
+      {
+        "parts": [
+          "The car drives ",
+          "."
+        ],
+        "correct": "fast",
+        "options": [
+          "fast",
+          "quick",
+          "slows"
+        ],
+        "emoji": "🚗"
+      },
+      {
+        "parts": [
+          "They ",
+          " happy today."
+        ],
+        "correct": "are",
+        "options": [
+          "is",
+          "are",
+          "be"
+        ],
+        "emoji": "😊"
+      },
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "under",
+          "above",
+          "in"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "over",
+          "in",
+          "under"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "red",
+          "fast",
+          "loud"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walked",
+          "walks",
+          "walking"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "too",
+          "two",
+          "to"
+        ],
+        "emoji": "🐕"
+      }
+    ],
+    "medium": [
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautiful",
+          "beautifully",
+          "beauty"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finished",
+          "finishes",
+          "finish"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "for",
+          "by",
+          "with"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "are",
+          "do",
+          "will"
+        ],
+        "emoji": "☔"
+      },
+      {
+        "parts": [
+          "Neither John ",
+          " Mary could come."
+        ],
+        "correct": "nor",
+        "options": [
+          "and",
+          "or",
+          "nor"
+        ],
+        "emoji": "👫"
+      },
+      {
+        "parts": [
+          "He has been waiting ",
+          " two hours."
+        ],
+        "correct": "for",
+        "options": [
+          "since",
+          "until",
+          "for"
+        ],
+        "emoji": "⏳"
+      },
+      {
+        "parts": [
+          "This puzzle is ",
+          " difficult than the last one."
+        ],
+        "correct": "more",
+        "options": [
+          "most",
+          "more",
+          "much"
+        ],
+        "emoji": "🧩"
+      },
+      {
+        "parts": [
+          "I will call you as ",
+          " as I arrive."
+        ],
+        "correct": "soon",
+        "options": [
+          "soon",
+          "quick",
+          "long"
+        ],
+        "emoji": "📱"
+      },
+      {
+        "parts": [
+          "The book, ",
+          " was on the table, is mine."
+        ],
+        "correct": "which",
+        "options": [
+          "where",
+          "who",
+          "which"
+        ],
+        "emoji": "📘"
+      },
+      {
+        "parts": [
+          "Please speak ",
+          " so everyone can hear."
+        ],
+        "correct": "loudly",
+        "options": [
+          "loudly",
+          "loud",
+          "loudness"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "He walked ",
+          " the dark tunnel."
+        ],
+        "correct": "through",
+        "options": [
+          "between",
+          "over",
+          "through"
+        ],
+        "emoji": "🚇"
+      },
+      {
+        "parts": [
+          "I can't find my keys ",
+          "."
+        ],
+        "correct": "anywhere",
+        "options": [
+          "nowhere",
+          "somewhere",
+          "anywhere"
+        ],
+        "emoji": "🔑"
+      },
+      {
+        "parts": [
+          "They played football ",
+          " the rain."
+        ],
+        "correct": "despite",
+        "options": [
+          "even",
+          "although",
+          "despite"
+        ],
+        "emoji": "⚽"
+      },
+      {
+        "parts": [
+          "She is the ",
+          " student in the class."
+        ],
+        "correct": "smartest",
+        "options": [
+          "smarter",
+          "smart",
+          "smartest"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautifully",
+          "beautiful",
+          "beauty"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finished",
+          "finishes",
+          "finish"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "by",
+          "with",
+          "for"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "will",
+          "do",
+          "are"
+        ],
+        "emoji": "☔"
+      }
+    ],
+    "hard": [
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "though",
+          "what",
+          "how"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "when",
+          "than",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "inrelevant",
+          "unrelevant",
+          "irrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "have",
+          "will have",
+          "will"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "for",
+          "with"
+        ],
+        "emoji": "🌅"
+      },
+      {
+        "parts": [
+          "The committee ",
+          " reached a decision."
+        ],
+        "correct": "has",
+        "options": [
+          "are",
+          "has",
+          "have"
+        ],
+        "emoji": "⚖️"
+      },
+      {
+        "parts": [
+          "She was completely ",
+          " in her reading."
+        ],
+        "correct": "absorbed",
+        "options": [
+          "absorbing",
+          "absorbed",
+          "absorbs"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "It is essential that he ",
+          " present."
+        ],
+        "correct": "be",
+        "options": [
+          "was",
+          "is",
+          "be"
+        ],
+        "emoji": "❗"
+      },
+      {
+        "parts": [
+          "Not only did he win, ",
+          " he broke the record."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "and",
+          "also"
+        ],
+        "emoji": "🏆"
+      },
+      {
+        "parts": [
+          "The medicine alleviated the symptoms ",
+          "."
+        ],
+        "correct": "temporarily",
+        "options": [
+          "temporarily",
+          "temporal",
+          "temporary"
+        ],
+        "emoji": "💊"
+      },
+      {
+        "parts": [
+          "The politician's speech was full of ",
+          "."
+        ],
+        "correct": "rhetoric",
+        "options": [
+          "rhetoric",
+          "rhethoric",
+          "rethoric"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "They were averse ",
+          " taking any risks."
+        ],
+        "correct": "to",
+        "options": [
+          "for",
+          "from",
+          "to"
+        ],
+        "emoji": "⚠️"
+      },
+      {
+        "parts": [
+          "His explanation was somewhat ",
+          "."
+        ],
+        "correct": "ambiguous",
+        "options": [
+          "ambiguous",
+          "ambidextrous",
+          "ambient"
+        ],
+        "emoji": "❓"
+      },
+      {
+        "parts": [
+          "We must comply ",
+          " the regulations."
+        ],
+        "correct": "with",
+        "options": [
+          "to",
+          "with",
+          "for"
+        ],
+        "emoji": "📜"
+      },
+      {
+        "parts": [
+          "The phenomenon is difficult to ",
+          "."
+        ],
+        "correct": "comprehend",
+        "options": [
+          "comprehend",
+          "comprehensive",
+          "apprehend"
+        ],
+        "emoji": "🌌"
+      },
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "what",
+          "how",
+          "though"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "when",
+          "than",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "inrelevant",
+          "irrelevant",
+          "unrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "will have",
+          "have",
+          "will"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "with",
+          "to",
+          "for"
+        ],
+        "emoji": "🌅"
+      }
+    ]
+  },
+  "5": {
+    "easy": [
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "in",
+          "above",
+          "under"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "under",
+          "in",
+          "over"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "fast",
+          "red"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walks",
+          "walking",
+          "walked"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "two",
+          "too",
+          "to"
+        ],
+        "emoji": "🐕"
+      },
+      {
+        "parts": [
+          "The sun is very ",
+          "."
+        ],
+        "correct": "hot",
+        "options": [
+          "blue",
+          "cold",
+          "hot"
+        ],
+        "emoji": "☀️"
+      },
+      {
+        "parts": [
+          "Look ",
+          " the beautiful sky!"
+        ],
+        "correct": "at",
+        "options": [
+          "in",
+          "on",
+          "at"
+        ],
+        "emoji": "☁️"
+      },
+      {
+        "parts": [
+          "A fish lives ",
+          " the water."
+        ],
+        "correct": "in",
+        "options": [
+          "above",
+          "on",
+          "in"
+        ],
+        "emoji": "🐟"
+      },
+      {
+        "parts": [
+          "We ",
+          " playing a game."
+        ],
+        "correct": "are",
+        "options": [
+          "am",
+          "are",
+          "is"
+        ],
+        "emoji": "🎮"
+      },
+      {
+        "parts": [
+          "That is ",
+          " book."
+        ],
+        "correct": "my",
+        "options": [
+          "my",
+          "I",
+          "me"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "The mouse ran ",
+          " the hole."
+        ],
+        "correct": "into",
+        "options": [
+          "into",
+          "under",
+          "onto"
+        ],
+        "emoji": "🐭"
+      },
+      {
+        "parts": [
+          "She ",
+          " a song gracefully."
+        ],
+        "correct": "sings",
+        "options": [
+          "singing",
+          "sung",
+          "sings"
+        ],
+        "emoji": "🎵"
+      },
+      {
+        "parts": [
+          "He is ",
+          " than me."
+        ],
+        "correct": "taller",
+        "options": [
+          "tallest",
+          "tall",
+          "taller"
+        ],
+        "emoji": "📏"
+      },
+      {
+        "parts": [
+          "The car drives ",
+          "."
+        ],
+        "correct": "fast",
+        "options": [
+          "quick",
+          "fast",
+          "slows"
+        ],
+        "emoji": "🚗"
+      },
+      {
+        "parts": [
+          "They ",
+          " happy today."
+        ],
+        "correct": "are",
+        "options": [
+          "are",
+          "be",
+          "is"
+        ],
+        "emoji": "😊"
+      },
+      {
+        "parts": [
+          "The cat is ",
+          " the table."
+        ],
+        "correct": "under",
+        "options": [
+          "above",
+          "under",
+          "in"
+        ],
+        "emoji": "🐈"
+      },
+      {
+        "parts": [
+          "The bird flew ",
+          " the tree."
+        ],
+        "correct": "over",
+        "options": [
+          "under",
+          "in",
+          "over"
+        ],
+        "emoji": "🐦"
+      },
+      {
+        "parts": [
+          "She is holding a ",
+          " apple."
+        ],
+        "correct": "red",
+        "options": [
+          "loud",
+          "fast",
+          "red"
+        ],
+        "emoji": "🍎"
+      },
+      {
+        "parts": [
+          "He ",
+          " to the park yesterday."
+        ],
+        "correct": "walked",
+        "options": [
+          "walks",
+          "walked",
+          "walking"
+        ],
+        "emoji": "🚶"
+      },
+      {
+        "parts": [
+          "I have ",
+          " dogs."
+        ],
+        "correct": "two",
+        "options": [
+          "too",
+          "two",
+          "to"
+        ],
+        "emoji": "🐕"
+      }
+    ],
+    "medium": [
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautifully",
+          "beautiful",
+          "beauty"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finishes",
+          "finish",
+          "finished"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "with",
+          "for",
+          "by"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "will",
+          "do",
+          "are"
+        ],
+        "emoji": "☔"
+      },
+      {
+        "parts": [
+          "Neither John ",
+          " Mary could come."
+        ],
+        "correct": "nor",
+        "options": [
+          "and",
+          "or",
+          "nor"
+        ],
+        "emoji": "👫"
+      },
+      {
+        "parts": [
+          "He has been waiting ",
+          " two hours."
+        ],
+        "correct": "for",
+        "options": [
+          "until",
+          "since",
+          "for"
+        ],
+        "emoji": "⏳"
+      },
+      {
+        "parts": [
+          "This puzzle is ",
+          " difficult than the last one."
+        ],
+        "correct": "more",
+        "options": [
+          "more",
+          "much",
+          "most"
+        ],
+        "emoji": "🧩"
+      },
+      {
+        "parts": [
+          "I will call you as ",
+          " as I arrive."
+        ],
+        "correct": "soon",
+        "options": [
+          "long",
+          "quick",
+          "soon"
+        ],
+        "emoji": "📱"
+      },
+      {
+        "parts": [
+          "The book, ",
+          " was on the table, is mine."
+        ],
+        "correct": "which",
+        "options": [
+          "where",
+          "who",
+          "which"
+        ],
+        "emoji": "📘"
+      },
+      {
+        "parts": [
+          "Please speak ",
+          " so everyone can hear."
+        ],
+        "correct": "loudly",
+        "options": [
+          "loudly",
+          "loud",
+          "loudness"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "He walked ",
+          " the dark tunnel."
+        ],
+        "correct": "through",
+        "options": [
+          "through",
+          "between",
+          "over"
+        ],
+        "emoji": "🚇"
+      },
+      {
+        "parts": [
+          "I can't find my keys ",
+          "."
+        ],
+        "correct": "anywhere",
+        "options": [
+          "anywhere",
+          "nowhere",
+          "somewhere"
+        ],
+        "emoji": "🔑"
+      },
+      {
+        "parts": [
+          "They played football ",
+          " the rain."
+        ],
+        "correct": "despite",
+        "options": [
+          "despite",
+          "although",
+          "even"
+        ],
+        "emoji": "⚽"
+      },
+      {
+        "parts": [
+          "She is the ",
+          " student in the class."
+        ],
+        "correct": "smartest",
+        "options": [
+          "smarter",
+          "smartest",
+          "smart"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "I wanted to go, ",
+          " it started raining."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "so",
+          "because"
+        ],
+        "emoji": "🌧️"
+      },
+      {
+        "parts": [
+          "She dances very ",
+          "."
+        ],
+        "correct": "beautifully",
+        "options": [
+          "beautifully",
+          "beautiful",
+          "beauty"
+        ],
+        "emoji": "💃"
+      },
+      {
+        "parts": [
+          "Have you ",
+          " your homework?"
+        ],
+        "correct": "finished",
+        "options": [
+          "finish",
+          "finishes",
+          "finished"
+        ],
+        "emoji": "📝"
+      },
+      {
+        "parts": [
+          "The cake was baked ",
+          " my mother."
+        ],
+        "correct": "by",
+        "options": [
+          "for",
+          "by",
+          "with"
+        ],
+        "emoji": "🎂"
+      },
+      {
+        "parts": [
+          "If it rains, we ",
+          " stay inside."
+        ],
+        "correct": "will",
+        "options": [
+          "will",
+          "are",
+          "do"
+        ],
+        "emoji": "☔"
+      }
+    ],
+    "hard": [
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "though",
+          "how",
+          "what"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "than",
+          "when",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "inrelevant",
+          "unrelevant",
+          "irrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "will have",
+          "have",
+          "will"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "for",
+          "with"
+        ],
+        "emoji": "🌅"
+      },
+      {
+        "parts": [
+          "The committee ",
+          " reached a decision."
+        ],
+        "correct": "has",
+        "options": [
+          "has",
+          "have",
+          "are"
+        ],
+        "emoji": "⚖️"
+      },
+      {
+        "parts": [
+          "She was completely ",
+          " in her reading."
+        ],
+        "correct": "absorbed",
+        "options": [
+          "absorbed",
+          "absorbs",
+          "absorbing"
+        ],
+        "emoji": "📖"
+      },
+      {
+        "parts": [
+          "It is essential that he ",
+          " present."
+        ],
+        "correct": "be",
+        "options": [
+          "is",
+          "be",
+          "was"
+        ],
+        "emoji": "❗"
+      },
+      {
+        "parts": [
+          "Not only did he win, ",
+          " he broke the record."
+        ],
+        "correct": "but",
+        "options": [
+          "but",
+          "and",
+          "also"
+        ],
+        "emoji": "🏆"
+      },
+      {
+        "parts": [
+          "The medicine alleviated the symptoms ",
+          "."
+        ],
+        "correct": "temporarily",
+        "options": [
+          "temporarily",
+          "temporal",
+          "temporary"
+        ],
+        "emoji": "💊"
+      },
+      {
+        "parts": [
+          "The politician's speech was full of ",
+          "."
+        ],
+        "correct": "rhetoric",
+        "options": [
+          "rethoric",
+          "rhethoric",
+          "rhetoric"
+        ],
+        "emoji": "🗣️"
+      },
+      {
+        "parts": [
+          "They were averse ",
+          " taking any risks."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "from",
+          "for"
+        ],
+        "emoji": "⚠️"
+      },
+      {
+        "parts": [
+          "His explanation was somewhat ",
+          "."
+        ],
+        "correct": "ambiguous",
+        "options": [
+          "ambiguous",
+          "ambient",
+          "ambidextrous"
+        ],
+        "emoji": "❓"
+      },
+      {
+        "parts": [
+          "We must comply ",
+          " the regulations."
+        ],
+        "correct": "with",
+        "options": [
+          "with",
+          "to",
+          "for"
+        ],
+        "emoji": "📜"
+      },
+      {
+        "parts": [
+          "The phenomenon is difficult to ",
+          "."
+        ],
+        "correct": "comprehend",
+        "options": [
+          "comprehend",
+          "comprehensive",
+          "apprehend"
+        ],
+        "emoji": "🌌"
+      },
+      {
+        "parts": [
+          "He acted as ",
+          " he knew everything."
+        ],
+        "correct": "though",
+        "options": [
+          "though",
+          "how",
+          "what"
+        ],
+        "emoji": "🎭"
+      },
+      {
+        "parts": [
+          "Scarcely had she left ",
+          " it began to pour."
+        ],
+        "correct": "when",
+        "options": [
+          "when",
+          "than",
+          "then"
+        ],
+        "emoji": "🏃"
+      },
+      {
+        "parts": [
+          "The evidence was entirely ",
+          " to the case."
+        ],
+        "correct": "irrelevant",
+        "options": [
+          "inrelevant",
+          "unrelevant",
+          "irrelevant"
+        ],
+        "emoji": "🔍"
+      },
+      {
+        "parts": [
+          "By next year, I ",
+          " graduated."
+        ],
+        "correct": "will have",
+        "options": [
+          "have",
+          "will have",
+          "will"
+        ],
+        "emoji": "🎓"
+      },
+      {
+        "parts": [
+          "He was accustomed ",
+          " waking up early."
+        ],
+        "correct": "to",
+        "options": [
+          "to",
+          "for",
+          "with"
+        ],
+        "emoji": "🌅"
+      }
+    ]
+  }
+};
+
+let currentDifficulty = 'easy';
+let currentQuestionIndex = 0;
+let currentQuestionData = null;
+
+window.updateStarsDisplay = function updateStarsDisplay() {
+    let stars = localStorage.getItem('sparky_stars') || '0';
+    document.getElementById('stars-display').innerHTML = `<span class="material-symbols-outlined">star</span> ${stars}`;
+}
+
+window.saveProgress = function saveProgress() {
+    localStorage.setItem('sparky_wordDrop', JSON.stringify({
+        difficulty: currentDifficulty,
+        questionIndex: currentQuestionIndex
+    }));
+}
+
+window.initGame = function initGame() {
+    let saved = localStorage.getItem('sparky_wordDrop');
+    if (saved) {
+        let data = JSON.parse(saved);
+        currentDifficulty = data.difficulty;
+        if(currentDifficulty === 'class1' || currentDifficulty === 'easy') currentDifficulty = 'easy';
+        if(currentDifficulty === 'class2' || currentDifficulty === 'medium') currentDifficulty = 'medium';
+        if(currentDifficulty === 'class3' || currentDifficulty === 'hard') currentDifficulty = 'hard';
+
+        currentQuestionIndex = data.questionIndex;
+    }
+    updateStarsDisplay();
+    loadQuestion();
+}
+
+window.loadQuestion = function loadQuestion() {
+    let studentClass = localStorage.getItem('sparky_grade') || "1";
+    studentClass = studentClass.replace('Class', '').trim();
+    const questions = SENTENCE_BANK[studentClass][currentDifficulty];
+    
+    
+    const btn1 = document.getElementById('btn-class1');
+    const btn2 = document.getElementById('btn-class2');
+    const btn3 = document.getElementById('btn-class3');
+
+    const activeClass = "flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold bg-primary-container text-on-primary-container inner-glow transition-all";
+    const inactiveClass = "flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold text-on-surface-variant transition-all";
+
+    if (btn1) btn1.className = activeClass;
+    if (btn2) btn2.className = currentDifficulty === 'medium' || currentDifficulty === 'hard' ? activeClass : inactiveClass;
+    if (btn3) btn3.className = currentDifficulty === 'hard' ? activeClass : inactiveClass;
+
+    if (currentDifficulty === 'easy') {
+        if (btn1) btn1.innerHTML = `Easy <span class="block text-xs opacity-80">${currentQuestionIndex + 1}/${questions.length} Sentences</span>`;
+        if (btn2) btn2.innerHTML = `Medium <span class="block text-xs opacity-80">Locked</span>`;
+        if (btn3) btn3.innerHTML = `Hard <span class="block text-xs opacity-80">Locked</span>`;
+    } else if (currentDifficulty === 'medium') {
+        if (btn1) btn1.innerHTML = `Easy <span class="block text-xs opacity-80">${questions.length}/${questions.length} Sentences</span>`;
+        if (btn2) btn2.innerHTML = `Medium <span class="block text-xs opacity-80">${currentQuestionIndex + 1}/${questions.length} Sentences</span>`;
+        if (btn3) btn3.innerHTML = `Hard <span class="block text-xs opacity-80">Locked</span>`;
+    } else if (currentDifficulty === 'hard') {
+        if (btn1) btn1.innerHTML = `Easy <span class="block text-xs opacity-80">${questions.length}/${questions.length} Sentences</span>`;
+        if (btn2) btn2.innerHTML = `Medium <span class="block text-xs opacity-80">${questions.length}/${questions.length} Sentences</span>`;
+        if (btn3) btn3.innerHTML = `Hard <span class="block text-xs opacity-80">${currentQuestionIndex + 1}/${questions.length} Sentences</span>`;
+    }
+    
+    // Removing old level-title updates since we set innerHTML directly
+    
+    if (currentDifficulty === 'medium' || currentDifficulty === 'hard') {
+        document.getElementById('prog-circle-medium').className = "w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold bubbly-shadow";
+        document.getElementById('prog-line-1').className = "h-2 flex-1 bg-primary-container rounded-full";
+        document.getElementById('prog-line-2').className = "h-2 flex-1 bg-primary-container rounded-full progress-candy-stripe";
+    }
+    if (currentDifficulty === 'hard') {
+        document.getElementById('prog-circle-hard').className = "w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold bubbly-shadow";
+        document.getElementById('prog-line-2').className = "h-2 flex-1 bg-primary-container rounded-full";
+    }
+
+    if (currentQuestionIndex >= questions.length) {
+        levelUp();
+        return;
+    }
+
+    currentQuestionData = questions[currentQuestionIndex];
+    
+    
+    
+    const progressPercent = (currentQuestionIndex / questions.length) * 100;
+    
+    // Update progress bar
+    document.querySelector('.w-32 .h-full').style.width = `${progressPercent}%`;
+
+    const imgContainer = document.getElementById('subject-image-container');
+    imgContainer.innerHTML = currentQuestionData.emoji;
+    
+    const sentenceContainer = document.getElementById('sentence-container');
+    sentenceContainer.innerHTML = `
+        ${currentQuestionData.parts[0]}
+        <span id="drop-blank" class="inline-block w-32 border-b-4 border-primary-container mx-2 h-8 translate-y-1 bg-surface-container-lowest rounded-t-lg transition-all"></span>
+        ${currentQuestionData.parts[1]}
+    `;
+    
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+    
+    let options = [...currentQuestionData.options];
+    options.sort(() => Math.random() - 0.5); // Shuffle
+    
+    options.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.className = "group min-w-[120px] bg-white border-2 border-outline-variant p-6 rounded-xl bubbly-shadow   transition-all active:translate-y-2 active:shadow-none select-none";
+        btn.onclick = () => handleSelect(btn, opt);
+        btn.innerHTML = `<span class="font-headline-md text-primary block group-active:scale-95 transition-transform">${opt}</span>`;
+        optionsContainer.appendChild(btn);
+    });
+}
+
+window.handleSelect = function handleSelect(btn, word) {
+    const blank = document.getElementById('drop-blank');
+    
+    // Visual feedback for selection
+    if(word === currentQuestionData.correct) {
+        blank.innerHTML = `<span class="text-primary font-bold text-xl animate-bounce inline-block mt-[-8px]">${word}</span>`;
+        blank.classList.remove('border-primary-container');
+        blank.classList.add('border-tertiary-container');
+        btn.classList.add('bg-tertiary-container', 'border-tertiary');
+        
+        // Disable all buttons
+        const allBtns = document.getElementById('options-container').querySelectorAll('button');
+        allBtns.forEach(b => b.onclick = null);
+        
+        // Trigger success modal overlay
+        setTimeout(() => {
+            const winFeedback = document.createElement('div');
+            winFeedback.className = "fixed inset-0 pointer-events-none flex items-center justify-center z-[100] bg-on-surface/30 backdrop-blur-sm transition-all";
+        let trophies = JSON.parse(localStorage.getItem('klps_trophies') || '{}');
+        if (!trophies['grammar_master']) {
+            trophies['grammar_master'] = true;
+            localStorage.setItem('klps_trophies', JSON.stringify(trophies));
+        }
+        if (!trophies['first_steps']) {
+            trophies['first_steps'] = true;
+            localStorage.setItem('klps_trophies', JSON.stringify(trophies));
+        }
+
+            winFeedback.innerHTML = `
+                <div class="bg-white p-8 md:p-12 rounded-3xl bubbly-shadow border-4 border-tertiary flex flex-col items-center animate-bounce mx-4">
+                    <span class="text-6xl md:text-8xl mb-2">🎉</span>
+                    <h2 class="font-display-lg text-tertiary mt-2 text-center">Great Job!</h2>
+                </div>
+            `;
+            document.body.appendChild(winFeedback);
+            
+            setTimeout(() => {
+                winFeedback.remove();
+                
+                let stars = parseInt(localStorage.getItem('sparky_stars') || '0');
+                localStorage.setItem('sparky_stars', stars + 1);
+                
+                // Track words caught for achievements
+                let wordsCaught = parseInt(localStorage.getItem('klps_words_caught') || '0');
+                localStorage.setItem('klps_words_caught', wordsCaught + 1);
+                
+                let masteryData = JSON.parse(localStorage.getItem('mastery_data') || '{"english": 0, "math": 0, "evs": 0}');
+                masteryData['english'] = Math.min(100, masteryData['english'] + 5);
+                localStorage.setItem('mastery_data', JSON.stringify(masteryData));
+                let weeklyData = JSON.parse(localStorage.getItem('weekly_stars') || '[0,0,0,0,0,0,0]');
+                let dayIndex = new Date().getDay() - 1; 
+                if (dayIndex < 0) dayIndex = 6;
+                weeklyData[dayIndex] = Math.min(100, weeklyData[dayIndex] + 5);
+                localStorage.setItem('weekly_stars', JSON.stringify(weeklyData));
+                updateStarsDisplay();
+                
+                currentQuestionIndex++;
+                saveProgress();
+                loadQuestion();
+            }, 1500);
+        }, 500);
+    } else {
+        btn.classList.add('bg-error-container', 'border-error');
+        let struggles = JSON.parse(localStorage.getItem('klps_struggles') || '[]');
+        struggles.push({ subject: 'English', topic: "Grammar Rules", timestamp: Date.now() });
+        localStorage.setItem('klps_struggles', JSON.stringify(struggles));
+
+        setTimeout(() => {
+            btn.classList.remove('bg-error-container', 'border-error');
+        }, 500);
+    }
+}
+
+window.levelUp = function levelUp() {
+    let nextDiff = '';
+    let nextDiffDisplay = '';
+    let isComplete = false;
+    
+    if (currentDifficulty === 'easy') {
+        nextDiff = 'medium';
+        nextDiffDisplay = 'Medium';
+        document.getElementById('btn-class2').classList.remove('text-on-surface-variant');
+        document.getElementById('btn-class2').classList.add('bg-primary-container', 'text-on-primary-container', 'inner-glow');
+        document.getElementById('btn-class2').innerHTML = 'Medium <span class="block text-xs opacity-80">0/20 Sentences</span>';
+        document.getElementById('prog-circle-medium').classList.remove('bg-surface-variant', 'text-on-surface-variant', 'border-2', 'border-outline-variant');
+        document.getElementById('prog-circle-medium').classList.add('bg-primary-container', 'text-on-primary-container', 'bubbly-shadow');
+        document.getElementById('prog-line-1').classList.remove('progress-candy-stripe');
+        document.getElementById('prog-line-2').classList.add('progress-candy-stripe');
+    } else if (currentDifficulty === 'medium') {
+        nextDiff = 'hard';
+        nextDiffDisplay = 'Hard';
+        document.getElementById('btn-class3').classList.remove('text-on-surface-variant');
+        document.getElementById('btn-class3').classList.add('bg-primary-container', 'text-on-primary-container', 'inner-glow');
+        document.getElementById('btn-class3').innerHTML = 'Hard <span class="block text-xs opacity-80">0/20 Sentences</span>';
+        document.getElementById('prog-circle-hard').classList.remove('bg-surface-variant', 'text-on-surface-variant', 'border-2', 'border-outline-variant');
+        document.getElementById('prog-circle-hard').classList.add('bg-primary-container', 'text-on-primary-container', 'bubbly-shadow');
+        document.getElementById('prog-line-2').classList.remove('progress-candy-stripe');
+    } else {
+        isComplete = true;
+    }
+
+    const modal = document.createElement('div');
+    modal.className = "fixed inset-0 z-[100] bg-on-surface/60 backdrop-blur-sm flex items-center justify-center transition-all";
+    
+    if (isComplete) {
+        modal.innerHTML = `
+            <div class="bg-surface-container-lowest p-8 rounded-3xl border-4 border-primary text-center shadow-[0_8px_0_0_#7c5800] max-w-sm w-full mx-4 transform animate-bounce">
+                <div class="w-24 h-24 bg-primary-container rounded-full mx-auto flex items-center justify-center mb-6">
+                    <span class="text-6xl">🏆</span>
+                </div>
+                <h2 class="font-display-lg-mobile text-primary mb-2">You Won!</h2>
+                <p class="font-body-lg text-on-surface-variant mb-8">You finished all sentences. You are a grammar champion!</p>
+                <button id="finish-game-btn" class="w-full bg-primary text-white font-headline-md py-4 rounded-xl shadow-[0_4px_0_0_#5e4200] active:translate-y-1 active:shadow-none transition-all">
+                    Back to Games
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById('finish-game-btn').addEventListener('click', () => {
+            localStorage.setItem('sparky_wordDrop', JSON.stringify({ difficulty: 'easy', questionIndex: 0 }));
+            window.location.href = 'learning_path.html';
+        });
+    } else {
+        modal.innerHTML = `
+            <div class="bg-surface-container-lowest p-8 rounded-3xl border-4 border-tertiary text-center shadow-[0_8px_0_0_#006d36] max-w-sm w-full mx-4 transform animate-bounce">
+                <div class="w-24 h-24 bg-tertiary-container rounded-full mx-auto flex items-center justify-center mb-6">
+                    <span class="text-6xl">🎉</span>
+                </div>
+                <h2 class="font-display-lg-mobile text-tertiary mb-2">Level Up!</h2>
+                <p class="font-body-lg text-on-surface-variant mb-8">You unlocked ${nextDiffDisplay} sentences!</p>
+                <button id="next-level-btn" class="w-full bg-tertiary text-white font-headline-md py-4 rounded-xl shadow-[0_4px_0_0_#005227] active:translate-y-1 active:shadow-none transition-all">
+                    Continue
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById('next-level-btn').addEventListener('click', () => {
+            modal.remove();
+            currentDifficulty = nextDiff;
+            currentQuestionIndex = 0;
+            saveProgress();
+            loadQuestion();
+        });
+    }
+}
+
+initGame();
+
+
+  </script>
+</body>
+</html>

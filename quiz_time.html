@@ -1,0 +1,3722 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="google" content="notranslate" />
+<title>Quiz Time - KLPS Pangire (A)</title>
+
+
+
+
+
+
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+      <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+
+<!-- Header Section (TopAppBar Identity) -->
+<header class="w-full top-0 px-container-margin py-4 bg-surface-container-low border-b-4 border-surface-variant shadow-[0_4px_0_0_rgba(221,228,230,1)] sticky z-50">
+<div class="flex justify-between items-center w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
+<h1 class="font-display-lg-mobile text-headline-md md:text-display-lg-mobile truncate bg-gradient-to-r from-primary to-primary-container text-transparent bg-clip-text drop-shadow-sm">KLPS Pangire (A)</h1>
+</div>
+<div class="flex flex-col items-end gap-1">
+<div id="stars-display" class="text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined">star</span>
+                    125
+                </div>
+<!-- Mini Progress -->
+<div class="w-32 h-4 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container progress-candy-stripe w-[60%]"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-container-margin py-4 md:py-8">
+<!-- Level Selector / Progression Logic -->
+<section class="mb-6 md:mb-12">
+<div class="bg-surface-container-highest p-2 rounded-lg flex gap-2 bubbly-shadow mb-4 md:mb-6">
+<button id="btn-class1" class="flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold bg-primary-container text-on-primary-container inner-glow transition-all">
+                    <span id="level-title">Easy</span> <span id="level-subtitle" class="block text-xs opacity-80">0/20 Quizzes</span>
+</button>
+<button id="btn-class2" class="flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold text-on-surface-variant transition-all">
+                    Medium <span class="block text-xs opacity-80">Locked</span>
+</button>
+<button id="btn-class3" class="flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold text-on-surface-variant transition-all">
+                    Hard <span class="block text-xs opacity-80">Locked</span>
+</button>
+</div>
+<!-- Progression Map (Visual) -->
+<div class="flex items-center justify-center gap-4 px-4">
+<div id="prog-circle-easy" class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold bubbly-shadow">1</div>
+<div id="prog-line-1" class="h-2 flex-1 bg-primary-container rounded-full progress-candy-stripe"></div>
+<div id="prog-circle-medium" class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold border-2 border-outline-variant">2</div>
+<div id="prog-line-2" class="h-2 flex-1 bg-surface-variant rounded-full"></div>
+<div id="prog-circle-hard" class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold border-2 border-outline-variant">3</div>
+</div>
+</section>
+<!-- Game Area Card -->
+<section class="bg-white rounded-lg bubbly-card p-4 md:p-8 text-center relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-tertiary-container opacity-10 rounded-full blur-3xl"></div>
+<!-- Illustration Area -->
+<div class="mb-4 flex justify-center">
+<div id="subject-emoji-container" class="w-24 h-24 md:w-32 md:h-32 bg-surface-container-low rounded-xl bubbly-shadow overflow-hidden border-4 border-white flex items-center justify-center text-[60px] md:text-[80px] select-none animate-float">
+</div>
+</div>
+<!-- Question Area -->
+<div class="mb-6">
+<p id="question-container" class="font-headline-lg text-headline-md text-on-background leading-relaxed">
+                </p>
+</div>
+<!-- Word Drops (Options) -->
+<div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 max-w-2xl mx-auto">
+</div>
+</section>
+</main>
+
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-1 pt-1 bg-white border-t-4 border-surface-variant">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary group" href="learning_path.html" >
+<div class="px-4 py-0.5 bg-primary-container rounded-full mb-0 border-2 border-primary/20 transition-transform group-active:scale-95">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<span class="font-bold text-[10px]">Home</span>
+</a>
+
+<!-- Progress -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant group transition-colors" href="progress.html" >
+<div class="px-4 py-0.5 rounded-full mb-0 transition-all group-active:scale-95">
+<span class="material-symbols-outlined text-xl">leaderboard</span>
+</div>
+<span class="font-bold text-[10px]">Progress</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant group transition-colors" href="profile.html" >
+<div class="px-4 py-0.5 rounded-full mb-0 transition-all group-active:scale-95">
+<span class="material-symbols-outlined text-xl">person</span>
+</div>
+
+<span class="font-bold text-[10px]">Profile</span>
+</a>
+</nav>
+
+
+
+  <script>
+
+
+const QUIZ_BANK = {
+  "1": {
+    "easy": [
+      {
+        "question": "What is 1 + 1?",
+        "correct": "2",
+        "options": [
+          "4",
+          "1",
+          "3",
+          "2"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 2 + 2?",
+        "correct": "4",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "3"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 3 + 3?",
+        "correct": "6",
+        "options": [
+          "6",
+          "5",
+          "7",
+          "8"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 4 + 4?",
+        "correct": "8",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "7"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 5 + 5?",
+        "correct": "10",
+        "options": [
+          "10",
+          "12",
+          "11",
+          "9"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 6 + 1?",
+        "correct": "7",
+        "options": [
+          "8",
+          "6",
+          "7",
+          "9"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 7 + 2?",
+        "correct": "9",
+        "options": [
+          "8",
+          "10",
+          "11",
+          "9"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 8 + 3?",
+        "correct": "11",
+        "options": [
+          "12",
+          "10",
+          "11",
+          "13"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 9 + 4?",
+        "correct": "13",
+        "options": [
+          "15",
+          "12",
+          "14",
+          "13"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 10 + 5?",
+        "correct": "15",
+        "options": [
+          "16",
+          "15",
+          "17",
+          "14"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 11 + 1?",
+        "correct": "12",
+        "options": [
+          "14",
+          "11",
+          "13",
+          "12"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 12 + 2?",
+        "correct": "14",
+        "options": [
+          "15",
+          "14",
+          "13",
+          "16"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 13 + 3?",
+        "correct": "16",
+        "options": [
+          "17",
+          "18",
+          "16",
+          "15"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 14 + 4?",
+        "correct": "18",
+        "options": [
+          "17",
+          "19",
+          "18",
+          "20"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 15 + 5?",
+        "correct": "20",
+        "options": [
+          "19",
+          "22",
+          "20",
+          "21"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 16 + 1?",
+        "correct": "17",
+        "options": [
+          "19",
+          "16",
+          "18",
+          "17"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 17 + 2?",
+        "correct": "19",
+        "options": [
+          "19",
+          "20",
+          "18",
+          "21"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 18 + 3?",
+        "correct": "21",
+        "options": [
+          "21",
+          "20",
+          "23",
+          "22"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 19 + 4?",
+        "correct": "23",
+        "options": [
+          "24",
+          "22",
+          "25",
+          "23"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 20 + 5?",
+        "correct": "25",
+        "options": [
+          "26",
+          "25",
+          "24",
+          "27"
+        ],
+        "emoji": "🔢"
+      }
+    ],
+    "medium": [
+      {
+        "question": "What is 2 - 1?",
+        "correct": "1",
+        "options": [
+          "1",
+          "2",
+          "0",
+          "3"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 4 - 2?",
+        "correct": "2",
+        "options": [
+          "3",
+          "2",
+          "1",
+          "4"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 6 - 3?",
+        "correct": "3",
+        "options": [
+          "3",
+          "5",
+          "4",
+          "2"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 8 - 4?",
+        "correct": "4",
+        "options": [
+          "4",
+          "5",
+          "3",
+          "6"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 10 - 5?",
+        "correct": "5",
+        "options": [
+          "6",
+          "5",
+          "4",
+          "7"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 12 - 1?",
+        "correct": "11",
+        "options": [
+          "13",
+          "11",
+          "12",
+          "10"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 14 - 2?",
+        "correct": "12",
+        "options": [
+          "12",
+          "11",
+          "13",
+          "14"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 16 - 3?",
+        "correct": "13",
+        "options": [
+          "14",
+          "15",
+          "13",
+          "12"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 18 - 4?",
+        "correct": "14",
+        "options": [
+          "14",
+          "15",
+          "13",
+          "16"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 20 - 5?",
+        "correct": "15",
+        "options": [
+          "16",
+          "15",
+          "17",
+          "14"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 22 - 1?",
+        "correct": "21",
+        "options": [
+          "21",
+          "20",
+          "23",
+          "22"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 24 - 2?",
+        "correct": "22",
+        "options": [
+          "24",
+          "21",
+          "23",
+          "22"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 26 - 3?",
+        "correct": "23",
+        "options": [
+          "23",
+          "22",
+          "25",
+          "24"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 28 - 4?",
+        "correct": "24",
+        "options": [
+          "24",
+          "25",
+          "23",
+          "26"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 30 - 5?",
+        "correct": "25",
+        "options": [
+          "24",
+          "26",
+          "25",
+          "27"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 32 - 1?",
+        "correct": "31",
+        "options": [
+          "32",
+          "33",
+          "31",
+          "30"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 34 - 2?",
+        "correct": "32",
+        "options": [
+          "31",
+          "33",
+          "32",
+          "34"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 36 - 3?",
+        "correct": "33",
+        "options": [
+          "35",
+          "32",
+          "34",
+          "33"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 38 - 4?",
+        "correct": "34",
+        "options": [
+          "36",
+          "33",
+          "35",
+          "34"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 40 - 5?",
+        "correct": "35",
+        "options": [
+          "35",
+          "36",
+          "34",
+          "37"
+        ],
+        "emoji": "🧮"
+      }
+    ],
+    "hard": [
+      {
+        "question": "What is 1 x 1?",
+        "correct": "1",
+        "options": [
+          "2",
+          "1",
+          "0",
+          "3"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 2 x 2?",
+        "correct": "4",
+        "options": [
+          "6",
+          "3",
+          "5",
+          "4"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 3 x 3?",
+        "correct": "9",
+        "options": [
+          "11",
+          "8",
+          "10",
+          "9"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 4 x 4?",
+        "correct": "16",
+        "options": [
+          "18",
+          "17",
+          "16",
+          "15"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 5 x 5?",
+        "correct": "25",
+        "options": [
+          "27",
+          "24",
+          "26",
+          "25"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 6 x 1?",
+        "correct": "6",
+        "options": [
+          "5",
+          "7",
+          "8",
+          "6"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 7 x 2?",
+        "correct": "14",
+        "options": [
+          "13",
+          "15",
+          "14",
+          "16"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 8 x 3?",
+        "correct": "24",
+        "options": [
+          "23",
+          "25",
+          "24",
+          "26"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 9 x 4?",
+        "correct": "36",
+        "options": [
+          "35",
+          "38",
+          "37",
+          "36"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 10 x 5?",
+        "correct": "50",
+        "options": [
+          "50",
+          "51",
+          "49",
+          "52"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 11 x 1?",
+        "correct": "11",
+        "options": [
+          "11",
+          "12",
+          "10",
+          "13"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 12 x 2?",
+        "correct": "24",
+        "options": [
+          "23",
+          "24",
+          "26",
+          "25"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 13 x 3?",
+        "correct": "39",
+        "options": [
+          "41",
+          "38",
+          "40",
+          "39"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 14 x 4?",
+        "correct": "56",
+        "options": [
+          "58",
+          "55",
+          "57",
+          "56"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 15 x 5?",
+        "correct": "75",
+        "options": [
+          "77",
+          "74",
+          "76",
+          "75"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 16 x 1?",
+        "correct": "16",
+        "options": [
+          "18",
+          "15",
+          "17",
+          "16"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 17 x 2?",
+        "correct": "34",
+        "options": [
+          "34",
+          "36",
+          "35",
+          "33"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 18 x 3?",
+        "correct": "54",
+        "options": [
+          "54",
+          "55",
+          "53",
+          "56"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 19 x 4?",
+        "correct": "76",
+        "options": [
+          "78",
+          "76",
+          "77",
+          "75"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 20 x 5?",
+        "correct": "100",
+        "options": [
+          "102",
+          "100",
+          "99",
+          "101"
+        ],
+        "emoji": "✖️"
+      }
+    ]
+  },
+  "2": {
+    "easy": [
+      {
+        "question": "What is 2 + 2?",
+        "correct": "4",
+        "options": [
+          "4",
+          "5",
+          "3",
+          "6"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 4 + 4?",
+        "correct": "8",
+        "options": [
+          "9",
+          "8",
+          "10",
+          "7"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 6 + 6?",
+        "correct": "12",
+        "options": [
+          "14",
+          "11",
+          "13",
+          "12"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 8 + 8?",
+        "correct": "16",
+        "options": [
+          "17",
+          "15",
+          "16",
+          "18"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 10 + 10?",
+        "correct": "20",
+        "options": [
+          "20",
+          "21",
+          "19",
+          "22"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 12 + 2?",
+        "correct": "14",
+        "options": [
+          "16",
+          "13",
+          "15",
+          "14"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 14 + 4?",
+        "correct": "18",
+        "options": [
+          "18",
+          "19",
+          "17",
+          "20"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 16 + 6?",
+        "correct": "22",
+        "options": [
+          "21",
+          "23",
+          "24",
+          "22"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 18 + 8?",
+        "correct": "26",
+        "options": [
+          "27",
+          "28",
+          "26",
+          "25"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 20 + 10?",
+        "correct": "30",
+        "options": [
+          "32",
+          "29",
+          "31",
+          "30"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 22 + 2?",
+        "correct": "24",
+        "options": [
+          "24",
+          "26",
+          "25",
+          "23"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 24 + 4?",
+        "correct": "28",
+        "options": [
+          "28",
+          "27",
+          "30",
+          "29"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 26 + 6?",
+        "correct": "32",
+        "options": [
+          "34",
+          "31",
+          "33",
+          "32"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 28 + 8?",
+        "correct": "36",
+        "options": [
+          "36",
+          "37",
+          "35",
+          "38"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 30 + 10?",
+        "correct": "40",
+        "options": [
+          "40",
+          "42",
+          "41",
+          "39"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 32 + 2?",
+        "correct": "34",
+        "options": [
+          "34",
+          "35",
+          "36",
+          "33"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 34 + 4?",
+        "correct": "38",
+        "options": [
+          "38",
+          "39",
+          "37",
+          "40"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 36 + 6?",
+        "correct": "42",
+        "options": [
+          "44",
+          "41",
+          "43",
+          "42"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 38 + 8?",
+        "correct": "46",
+        "options": [
+          "48",
+          "45",
+          "47",
+          "46"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 40 + 10?",
+        "correct": "50",
+        "options": [
+          "49",
+          "51",
+          "50",
+          "52"
+        ],
+        "emoji": "🔢"
+      }
+    ],
+    "medium": [
+      {
+        "question": "What is 4 - 2?",
+        "correct": "2",
+        "options": [
+          "1",
+          "3",
+          "4",
+          "2"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 8 - 4?",
+        "correct": "4",
+        "options": [
+          "4",
+          "6",
+          "3",
+          "5"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 12 - 6?",
+        "correct": "6",
+        "options": [
+          "5",
+          "7",
+          "6",
+          "8"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 16 - 8?",
+        "correct": "8",
+        "options": [
+          "7",
+          "8",
+          "10",
+          "9"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 20 - 10?",
+        "correct": "10",
+        "options": [
+          "10",
+          "11",
+          "9",
+          "12"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 24 - 2?",
+        "correct": "22",
+        "options": [
+          "22",
+          "23",
+          "21",
+          "24"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 28 - 4?",
+        "correct": "24",
+        "options": [
+          "26",
+          "23",
+          "25",
+          "24"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 32 - 6?",
+        "correct": "26",
+        "options": [
+          "25",
+          "28",
+          "27",
+          "26"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 36 - 8?",
+        "correct": "28",
+        "options": [
+          "28",
+          "29",
+          "27",
+          "30"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 40 - 10?",
+        "correct": "30",
+        "options": [
+          "30",
+          "32",
+          "31",
+          "29"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 44 - 2?",
+        "correct": "42",
+        "options": [
+          "44",
+          "41",
+          "43",
+          "42"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 48 - 4?",
+        "correct": "44",
+        "options": [
+          "43",
+          "45",
+          "44",
+          "46"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 52 - 6?",
+        "correct": "46",
+        "options": [
+          "47",
+          "48",
+          "46",
+          "45"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 56 - 8?",
+        "correct": "48",
+        "options": [
+          "50",
+          "48",
+          "49",
+          "47"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 60 - 10?",
+        "correct": "50",
+        "options": [
+          "52",
+          "51",
+          "50",
+          "49"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 64 - 2?",
+        "correct": "62",
+        "options": [
+          "64",
+          "63",
+          "62",
+          "61"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 68 - 4?",
+        "correct": "64",
+        "options": [
+          "66",
+          "64",
+          "65",
+          "63"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 72 - 6?",
+        "correct": "66",
+        "options": [
+          "68",
+          "65",
+          "67",
+          "66"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 76 - 8?",
+        "correct": "68",
+        "options": [
+          "68",
+          "69",
+          "67",
+          "70"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 80 - 10?",
+        "correct": "70",
+        "options": [
+          "72",
+          "71",
+          "70",
+          "69"
+        ],
+        "emoji": "🧮"
+      }
+    ],
+    "hard": [
+      {
+        "question": "What is 2 x 2?",
+        "correct": "4",
+        "options": [
+          "2",
+          "6",
+          "8",
+          "4"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 4 x 4?",
+        "correct": "16",
+        "options": [
+          "16",
+          "18",
+          "14",
+          "20"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 6 x 6?",
+        "correct": "36",
+        "options": [
+          "40",
+          "34",
+          "38",
+          "36"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 8 x 8?",
+        "correct": "64",
+        "options": [
+          "64",
+          "68",
+          "66",
+          "62"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 10 x 10?",
+        "correct": "100",
+        "options": [
+          "100",
+          "102",
+          "98",
+          "104"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 12 x 2?",
+        "correct": "24",
+        "options": [
+          "24",
+          "26",
+          "28",
+          "22"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 14 x 4?",
+        "correct": "56",
+        "options": [
+          "54",
+          "60",
+          "58",
+          "56"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 16 x 6?",
+        "correct": "96",
+        "options": [
+          "94",
+          "96",
+          "100",
+          "98"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 18 x 8?",
+        "correct": "144",
+        "options": [
+          "144",
+          "148",
+          "146",
+          "142"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 20 x 10?",
+        "correct": "200",
+        "options": [
+          "200",
+          "202",
+          "204",
+          "198"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 22 x 2?",
+        "correct": "44",
+        "options": [
+          "48",
+          "42",
+          "46",
+          "44"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 24 x 4?",
+        "correct": "96",
+        "options": [
+          "98",
+          "96",
+          "100",
+          "94"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 26 x 6?",
+        "correct": "156",
+        "options": [
+          "160",
+          "154",
+          "158",
+          "156"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 28 x 8?",
+        "correct": "224",
+        "options": [
+          "224",
+          "228",
+          "222",
+          "226"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 30 x 10?",
+        "correct": "300",
+        "options": [
+          "300",
+          "302",
+          "298",
+          "304"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 32 x 2?",
+        "correct": "64",
+        "options": [
+          "68",
+          "64",
+          "66",
+          "62"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 34 x 4?",
+        "correct": "136",
+        "options": [
+          "136",
+          "138",
+          "134",
+          "140"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 36 x 6?",
+        "correct": "216",
+        "options": [
+          "218",
+          "216",
+          "220",
+          "214"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 38 x 8?",
+        "correct": "304",
+        "options": [
+          "308",
+          "304",
+          "306",
+          "302"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 40 x 10?",
+        "correct": "400",
+        "options": [
+          "400",
+          "404",
+          "402",
+          "398"
+        ],
+        "emoji": "✖️"
+      }
+    ]
+  },
+  "3": {
+    "easy": [
+      {
+        "question": "What is 3 + 3?",
+        "correct": "6",
+        "options": [
+          "5",
+          "8",
+          "7",
+          "6"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 6 + 6?",
+        "correct": "12",
+        "options": [
+          "12",
+          "13",
+          "14",
+          "11"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 9 + 9?",
+        "correct": "18",
+        "options": [
+          "19",
+          "20",
+          "17",
+          "18"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 12 + 12?",
+        "correct": "24",
+        "options": [
+          "24",
+          "25",
+          "23",
+          "26"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 15 + 15?",
+        "correct": "30",
+        "options": [
+          "31",
+          "32",
+          "30",
+          "29"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 18 + 3?",
+        "correct": "21",
+        "options": [
+          "23",
+          "20",
+          "22",
+          "21"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 21 + 6?",
+        "correct": "27",
+        "options": [
+          "29",
+          "26",
+          "28",
+          "27"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 24 + 9?",
+        "correct": "33",
+        "options": [
+          "35",
+          "34",
+          "32",
+          "33"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 27 + 12?",
+        "correct": "39",
+        "options": [
+          "41",
+          "40",
+          "39",
+          "38"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 30 + 15?",
+        "correct": "45",
+        "options": [
+          "47",
+          "46",
+          "45",
+          "44"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 33 + 3?",
+        "correct": "36",
+        "options": [
+          "36",
+          "37",
+          "35",
+          "38"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 36 + 6?",
+        "correct": "42",
+        "options": [
+          "44",
+          "43",
+          "41",
+          "42"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 39 + 9?",
+        "correct": "48",
+        "options": [
+          "49",
+          "50",
+          "48",
+          "47"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 42 + 12?",
+        "correct": "54",
+        "options": [
+          "56",
+          "53",
+          "55",
+          "54"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 45 + 15?",
+        "correct": "60",
+        "options": [
+          "62",
+          "61",
+          "60",
+          "59"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 48 + 3?",
+        "correct": "51",
+        "options": [
+          "52",
+          "50",
+          "53",
+          "51"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 51 + 6?",
+        "correct": "57",
+        "options": [
+          "59",
+          "56",
+          "57",
+          "58"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 54 + 9?",
+        "correct": "63",
+        "options": [
+          "64",
+          "63",
+          "65",
+          "62"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 57 + 12?",
+        "correct": "69",
+        "options": [
+          "71",
+          "69",
+          "70",
+          "68"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 60 + 15?",
+        "correct": "75",
+        "options": [
+          "74",
+          "76",
+          "77",
+          "75"
+        ],
+        "emoji": "🔢"
+      }
+    ],
+    "medium": [
+      {
+        "question": "What is 6 - 3?",
+        "correct": "3",
+        "options": [
+          "5",
+          "2",
+          "3",
+          "4"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 12 - 6?",
+        "correct": "6",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "5"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 18 - 9?",
+        "correct": "9",
+        "options": [
+          "8",
+          "10",
+          "9",
+          "11"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 24 - 12?",
+        "correct": "12",
+        "options": [
+          "14",
+          "11",
+          "13",
+          "12"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 30 - 15?",
+        "correct": "15",
+        "options": [
+          "15",
+          "16",
+          "14",
+          "17"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 36 - 3?",
+        "correct": "33",
+        "options": [
+          "35",
+          "32",
+          "34",
+          "33"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 42 - 6?",
+        "correct": "36",
+        "options": [
+          "36",
+          "37",
+          "35",
+          "38"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 48 - 9?",
+        "correct": "39",
+        "options": [
+          "41",
+          "38",
+          "40",
+          "39"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 54 - 12?",
+        "correct": "42",
+        "options": [
+          "42",
+          "44",
+          "43",
+          "41"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 60 - 15?",
+        "correct": "45",
+        "options": [
+          "44",
+          "46",
+          "47",
+          "45"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 66 - 3?",
+        "correct": "63",
+        "options": [
+          "65",
+          "62",
+          "64",
+          "63"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 72 - 6?",
+        "correct": "66",
+        "options": [
+          "66",
+          "67",
+          "65",
+          "68"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 78 - 9?",
+        "correct": "69",
+        "options": [
+          "71",
+          "68",
+          "70",
+          "69"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 84 - 12?",
+        "correct": "72",
+        "options": [
+          "72",
+          "73",
+          "71",
+          "74"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 90 - 15?",
+        "correct": "75",
+        "options": [
+          "75",
+          "76",
+          "77",
+          "74"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 96 - 3?",
+        "correct": "93",
+        "options": [
+          "93",
+          "94",
+          "95",
+          "92"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 102 - 6?",
+        "correct": "96",
+        "options": [
+          "98",
+          "96",
+          "97",
+          "95"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 108 - 9?",
+        "correct": "99",
+        "options": [
+          "101",
+          "100",
+          "99",
+          "98"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 114 - 12?",
+        "correct": "102",
+        "options": [
+          "104",
+          "102",
+          "103",
+          "101"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 120 - 15?",
+        "correct": "105",
+        "options": [
+          "104",
+          "107",
+          "105",
+          "106"
+        ],
+        "emoji": "🧮"
+      }
+    ],
+    "hard": [
+      {
+        "question": "What is 3 x 3?",
+        "correct": "9",
+        "options": [
+          "9",
+          "12",
+          "6",
+          "15"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 6 x 6?",
+        "correct": "36",
+        "options": [
+          "39",
+          "36",
+          "33",
+          "42"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 9 x 9?",
+        "correct": "81",
+        "options": [
+          "87",
+          "78",
+          "84",
+          "81"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 12 x 12?",
+        "correct": "144",
+        "options": [
+          "144",
+          "147",
+          "141",
+          "150"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 15 x 15?",
+        "correct": "225",
+        "options": [
+          "228",
+          "225",
+          "231",
+          "222"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 18 x 3?",
+        "correct": "54",
+        "options": [
+          "54",
+          "51",
+          "60",
+          "57"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 21 x 6?",
+        "correct": "126",
+        "options": [
+          "129",
+          "132",
+          "126",
+          "123"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 24 x 9?",
+        "correct": "216",
+        "options": [
+          "216",
+          "219",
+          "213",
+          "222"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 27 x 12?",
+        "correct": "324",
+        "options": [
+          "327",
+          "321",
+          "324",
+          "330"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 30 x 15?",
+        "correct": "450",
+        "options": [
+          "453",
+          "456",
+          "447",
+          "450"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 33 x 3?",
+        "correct": "99",
+        "options": [
+          "105",
+          "96",
+          "102",
+          "99"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 36 x 6?",
+        "correct": "216",
+        "options": [
+          "222",
+          "216",
+          "213",
+          "219"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 39 x 9?",
+        "correct": "351",
+        "options": [
+          "351",
+          "357",
+          "354",
+          "348"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 42 x 12?",
+        "correct": "504",
+        "options": [
+          "504",
+          "507",
+          "501",
+          "510"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 45 x 15?",
+        "correct": "675",
+        "options": [
+          "672",
+          "675",
+          "678",
+          "681"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 48 x 3?",
+        "correct": "144",
+        "options": [
+          "150",
+          "144",
+          "147",
+          "141"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 51 x 6?",
+        "correct": "306",
+        "options": [
+          "312",
+          "303",
+          "309",
+          "306"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 54 x 9?",
+        "correct": "486",
+        "options": [
+          "483",
+          "489",
+          "486",
+          "492"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 57 x 12?",
+        "correct": "684",
+        "options": [
+          "681",
+          "690",
+          "687",
+          "684"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 60 x 15?",
+        "correct": "900",
+        "options": [
+          "906",
+          "897",
+          "900",
+          "903"
+        ],
+        "emoji": "✖️"
+      }
+    ]
+  },
+  "4": {
+    "easy": [
+      {
+        "question": "What is 4 + 4?",
+        "correct": "8",
+        "options": [
+          "8",
+          "7",
+          "9",
+          "10"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 8 + 8?",
+        "correct": "16",
+        "options": [
+          "15",
+          "16",
+          "18",
+          "17"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 12 + 12?",
+        "correct": "24",
+        "options": [
+          "25",
+          "26",
+          "24",
+          "23"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 16 + 16?",
+        "correct": "32",
+        "options": [
+          "32",
+          "33",
+          "31",
+          "34"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 20 + 20?",
+        "correct": "40",
+        "options": [
+          "40",
+          "41",
+          "42",
+          "39"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 24 + 4?",
+        "correct": "28",
+        "options": [
+          "30",
+          "27",
+          "29",
+          "28"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 28 + 8?",
+        "correct": "36",
+        "options": [
+          "36",
+          "37",
+          "35",
+          "38"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 32 + 12?",
+        "correct": "44",
+        "options": [
+          "43",
+          "44",
+          "46",
+          "45"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 36 + 16?",
+        "correct": "52",
+        "options": [
+          "54",
+          "51",
+          "53",
+          "52"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 40 + 20?",
+        "correct": "60",
+        "options": [
+          "60",
+          "61",
+          "59",
+          "62"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 44 + 4?",
+        "correct": "48",
+        "options": [
+          "47",
+          "49",
+          "50",
+          "48"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 48 + 8?",
+        "correct": "56",
+        "options": [
+          "58",
+          "57",
+          "56",
+          "55"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 52 + 12?",
+        "correct": "64",
+        "options": [
+          "65",
+          "63",
+          "64",
+          "66"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 56 + 16?",
+        "correct": "72",
+        "options": [
+          "74",
+          "72",
+          "73",
+          "71"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 60 + 20?",
+        "correct": "80",
+        "options": [
+          "82",
+          "79",
+          "81",
+          "80"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 64 + 4?",
+        "correct": "68",
+        "options": [
+          "68",
+          "69",
+          "67",
+          "70"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 68 + 8?",
+        "correct": "76",
+        "options": [
+          "75",
+          "78",
+          "77",
+          "76"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 72 + 12?",
+        "correct": "84",
+        "options": [
+          "86",
+          "83",
+          "85",
+          "84"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 76 + 16?",
+        "correct": "92",
+        "options": [
+          "93",
+          "91",
+          "92",
+          "94"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 80 + 20?",
+        "correct": "100",
+        "options": [
+          "100",
+          "101",
+          "99",
+          "102"
+        ],
+        "emoji": "🔢"
+      }
+    ],
+    "medium": [
+      {
+        "question": "What is 8 - 4?",
+        "correct": "4",
+        "options": [
+          "5",
+          "6",
+          "3",
+          "4"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 16 - 8?",
+        "correct": "8",
+        "options": [
+          "10",
+          "8",
+          "9",
+          "7"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 24 - 12?",
+        "correct": "12",
+        "options": [
+          "12",
+          "13",
+          "11",
+          "14"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 32 - 16?",
+        "correct": "16",
+        "options": [
+          "18",
+          "16",
+          "17",
+          "15"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 40 - 20?",
+        "correct": "20",
+        "options": [
+          "20",
+          "22",
+          "21",
+          "19"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 48 - 4?",
+        "correct": "44",
+        "options": [
+          "44",
+          "45",
+          "46",
+          "43"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 56 - 8?",
+        "correct": "48",
+        "options": [
+          "50",
+          "48",
+          "49",
+          "47"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 64 - 12?",
+        "correct": "52",
+        "options": [
+          "51",
+          "53",
+          "52",
+          "54"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 72 - 16?",
+        "correct": "56",
+        "options": [
+          "56",
+          "57",
+          "58",
+          "55"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 80 - 20?",
+        "correct": "60",
+        "options": [
+          "62",
+          "60",
+          "61",
+          "59"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 88 - 4?",
+        "correct": "84",
+        "options": [
+          "83",
+          "85",
+          "84",
+          "86"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 96 - 8?",
+        "correct": "88",
+        "options": [
+          "88",
+          "89",
+          "87",
+          "90"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 104 - 12?",
+        "correct": "92",
+        "options": [
+          "92",
+          "91",
+          "93",
+          "94"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 112 - 16?",
+        "correct": "96",
+        "options": [
+          "96",
+          "97",
+          "95",
+          "98"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 120 - 20?",
+        "correct": "100",
+        "options": [
+          "102",
+          "99",
+          "101",
+          "100"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 128 - 4?",
+        "correct": "124",
+        "options": [
+          "125",
+          "126",
+          "124",
+          "123"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 136 - 8?",
+        "correct": "128",
+        "options": [
+          "128",
+          "129",
+          "127",
+          "130"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 144 - 12?",
+        "correct": "132",
+        "options": [
+          "133",
+          "134",
+          "131",
+          "132"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 152 - 16?",
+        "correct": "136",
+        "options": [
+          "135",
+          "137",
+          "136",
+          "138"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 160 - 20?",
+        "correct": "140",
+        "options": [
+          "140",
+          "141",
+          "139",
+          "142"
+        ],
+        "emoji": "🧮"
+      }
+    ],
+    "hard": [
+      {
+        "question": "What is 4 x 4?",
+        "correct": "16",
+        "options": [
+          "24",
+          "12",
+          "20",
+          "16"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 8 x 8?",
+        "correct": "64",
+        "options": [
+          "60",
+          "64",
+          "72",
+          "68"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 12 x 12?",
+        "correct": "144",
+        "options": [
+          "148",
+          "152",
+          "144",
+          "140"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 16 x 16?",
+        "correct": "256",
+        "options": [
+          "256",
+          "260",
+          "252",
+          "264"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 20 x 20?",
+        "correct": "400",
+        "options": [
+          "404",
+          "400",
+          "396",
+          "408"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 24 x 4?",
+        "correct": "96",
+        "options": [
+          "104",
+          "92",
+          "100",
+          "96"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 28 x 8?",
+        "correct": "224",
+        "options": [
+          "232",
+          "220",
+          "228",
+          "224"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 32 x 12?",
+        "correct": "384",
+        "options": [
+          "384",
+          "388",
+          "392",
+          "380"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 36 x 16?",
+        "correct": "576",
+        "options": [
+          "584",
+          "572",
+          "580",
+          "576"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 40 x 20?",
+        "correct": "800",
+        "options": [
+          "808",
+          "800",
+          "804",
+          "796"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 44 x 4?",
+        "correct": "176",
+        "options": [
+          "176",
+          "180",
+          "172",
+          "184"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 48 x 8?",
+        "correct": "384",
+        "options": [
+          "384",
+          "388",
+          "380",
+          "392"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 52 x 12?",
+        "correct": "624",
+        "options": [
+          "624",
+          "628",
+          "620",
+          "632"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 56 x 16?",
+        "correct": "896",
+        "options": [
+          "904",
+          "896",
+          "892",
+          "900"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 60 x 20?",
+        "correct": "1200",
+        "options": [
+          "1208",
+          "1200",
+          "1204",
+          "1196"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 64 x 4?",
+        "correct": "256",
+        "options": [
+          "264",
+          "252",
+          "260",
+          "256"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 68 x 8?",
+        "correct": "544",
+        "options": [
+          "540",
+          "548",
+          "552",
+          "544"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 72 x 12?",
+        "correct": "864",
+        "options": [
+          "864",
+          "868",
+          "872",
+          "860"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 76 x 16?",
+        "correct": "1216",
+        "options": [
+          "1224",
+          "1212",
+          "1220",
+          "1216"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 80 x 20?",
+        "correct": "1600",
+        "options": [
+          "1596",
+          "1608",
+          "1600",
+          "1604"
+        ],
+        "emoji": "✖️"
+      }
+    ]
+  },
+  "5": {
+    "easy": [
+      {
+        "question": "What is 5 + 5?",
+        "correct": "10",
+        "options": [
+          "12",
+          "9",
+          "11",
+          "10"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 10 + 10?",
+        "correct": "20",
+        "options": [
+          "21",
+          "22",
+          "20",
+          "19"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 15 + 15?",
+        "correct": "30",
+        "options": [
+          "32",
+          "29",
+          "31",
+          "30"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 20 + 20?",
+        "correct": "40",
+        "options": [
+          "40",
+          "41",
+          "39",
+          "42"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 25 + 25?",
+        "correct": "50",
+        "options": [
+          "52",
+          "49",
+          "51",
+          "50"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 30 + 5?",
+        "correct": "35",
+        "options": [
+          "37",
+          "35",
+          "36",
+          "34"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 35 + 10?",
+        "correct": "45",
+        "options": [
+          "45",
+          "46",
+          "44",
+          "47"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 40 + 15?",
+        "correct": "55",
+        "options": [
+          "57",
+          "54",
+          "56",
+          "55"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 45 + 20?",
+        "correct": "65",
+        "options": [
+          "67",
+          "64",
+          "66",
+          "65"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 50 + 25?",
+        "correct": "75",
+        "options": [
+          "75",
+          "77",
+          "76",
+          "74"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 55 + 5?",
+        "correct": "60",
+        "options": [
+          "60",
+          "62",
+          "61",
+          "59"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 60 + 10?",
+        "correct": "70",
+        "options": [
+          "72",
+          "69",
+          "71",
+          "70"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 65 + 15?",
+        "correct": "80",
+        "options": [
+          "82",
+          "79",
+          "81",
+          "80"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 70 + 20?",
+        "correct": "90",
+        "options": [
+          "89",
+          "91",
+          "92",
+          "90"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 75 + 25?",
+        "correct": "100",
+        "options": [
+          "102",
+          "101",
+          "100",
+          "99"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 80 + 5?",
+        "correct": "85",
+        "options": [
+          "86",
+          "85",
+          "87",
+          "84"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 85 + 10?",
+        "correct": "95",
+        "options": [
+          "97",
+          "94",
+          "96",
+          "95"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 90 + 15?",
+        "correct": "105",
+        "options": [
+          "107",
+          "104",
+          "106",
+          "105"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 95 + 20?",
+        "correct": "115",
+        "options": [
+          "115",
+          "116",
+          "117",
+          "114"
+        ],
+        "emoji": "🔢"
+      },
+      {
+        "question": "What is 100 + 25?",
+        "correct": "125",
+        "options": [
+          "125",
+          "127",
+          "126",
+          "124"
+        ],
+        "emoji": "🔢"
+      }
+    ],
+    "medium": [
+      {
+        "question": "What is 10 - 5?",
+        "correct": "5",
+        "options": [
+          "7",
+          "6",
+          "4",
+          "5"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 20 - 10?",
+        "correct": "10",
+        "options": [
+          "10",
+          "12",
+          "11",
+          "9"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 30 - 15?",
+        "correct": "15",
+        "options": [
+          "14",
+          "17",
+          "15",
+          "16"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 40 - 20?",
+        "correct": "20",
+        "options": [
+          "20",
+          "22",
+          "21",
+          "19"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 50 - 25?",
+        "correct": "25",
+        "options": [
+          "27",
+          "24",
+          "25",
+          "26"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 60 - 5?",
+        "correct": "55",
+        "options": [
+          "55",
+          "56",
+          "54",
+          "57"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 70 - 10?",
+        "correct": "60",
+        "options": [
+          "60",
+          "61",
+          "59",
+          "62"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 80 - 15?",
+        "correct": "65",
+        "options": [
+          "66",
+          "65",
+          "64",
+          "67"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 90 - 20?",
+        "correct": "70",
+        "options": [
+          "69",
+          "71",
+          "72",
+          "70"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 100 - 25?",
+        "correct": "75",
+        "options": [
+          "77",
+          "74",
+          "76",
+          "75"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 110 - 5?",
+        "correct": "105",
+        "options": [
+          "105",
+          "106",
+          "104",
+          "107"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 120 - 10?",
+        "correct": "110",
+        "options": [
+          "109",
+          "111",
+          "112",
+          "110"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 130 - 15?",
+        "correct": "115",
+        "options": [
+          "116",
+          "115",
+          "117",
+          "114"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 140 - 20?",
+        "correct": "120",
+        "options": [
+          "120",
+          "122",
+          "121",
+          "119"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 150 - 25?",
+        "correct": "125",
+        "options": [
+          "125",
+          "127",
+          "126",
+          "124"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 160 - 5?",
+        "correct": "155",
+        "options": [
+          "157",
+          "154",
+          "156",
+          "155"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 170 - 10?",
+        "correct": "160",
+        "options": [
+          "159",
+          "161",
+          "160",
+          "162"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 180 - 15?",
+        "correct": "165",
+        "options": [
+          "167",
+          "164",
+          "166",
+          "165"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 190 - 20?",
+        "correct": "170",
+        "options": [
+          "170",
+          "171",
+          "169",
+          "172"
+        ],
+        "emoji": "🧮"
+      },
+      {
+        "question": "What is 200 - 25?",
+        "correct": "175",
+        "options": [
+          "177",
+          "175",
+          "176",
+          "174"
+        ],
+        "emoji": "🧮"
+      }
+    ],
+    "hard": [
+      {
+        "question": "What is 5 x 5?",
+        "correct": "25",
+        "options": [
+          "25",
+          "30",
+          "20",
+          "35"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 10 x 10?",
+        "correct": "100",
+        "options": [
+          "100",
+          "105",
+          "95",
+          "110"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 15 x 15?",
+        "correct": "225",
+        "options": [
+          "235",
+          "220",
+          "230",
+          "225"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 20 x 20?",
+        "correct": "400",
+        "options": [
+          "405",
+          "410",
+          "400",
+          "395"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 25 x 25?",
+        "correct": "625",
+        "options": [
+          "635",
+          "620",
+          "625",
+          "630"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 30 x 5?",
+        "correct": "150",
+        "options": [
+          "150",
+          "155",
+          "145",
+          "160"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 35 x 10?",
+        "correct": "350",
+        "options": [
+          "350",
+          "355",
+          "360",
+          "345"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 40 x 15?",
+        "correct": "600",
+        "options": [
+          "605",
+          "600",
+          "610",
+          "595"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 45 x 20?",
+        "correct": "900",
+        "options": [
+          "910",
+          "895",
+          "905",
+          "900"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 50 x 25?",
+        "correct": "1250",
+        "options": [
+          "1250",
+          "1255",
+          "1260",
+          "1245"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 55 x 5?",
+        "correct": "275",
+        "options": [
+          "275",
+          "280",
+          "285",
+          "270"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 60 x 10?",
+        "correct": "600",
+        "options": [
+          "600",
+          "605",
+          "595",
+          "610"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 65 x 15?",
+        "correct": "975",
+        "options": [
+          "985",
+          "970",
+          "980",
+          "975"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 70 x 20?",
+        "correct": "1400",
+        "options": [
+          "1405",
+          "1410",
+          "1400",
+          "1395"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 75 x 25?",
+        "correct": "1875",
+        "options": [
+          "1875",
+          "1880",
+          "1885",
+          "1870"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 80 x 5?",
+        "correct": "400",
+        "options": [
+          "405",
+          "400",
+          "410",
+          "395"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 85 x 10?",
+        "correct": "850",
+        "options": [
+          "860",
+          "845",
+          "855",
+          "850"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 90 x 15?",
+        "correct": "1350",
+        "options": [
+          "1350",
+          "1355",
+          "1345",
+          "1360"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 95 x 20?",
+        "correct": "1900",
+        "options": [
+          "1910",
+          "1895",
+          "1905",
+          "1900"
+        ],
+        "emoji": "✖️"
+      },
+      {
+        "question": "What is 100 x 25?",
+        "correct": "2500",
+        "options": [
+          "2500",
+          "2505",
+          "2495",
+          "2510"
+        ],
+        "emoji": "✖️"
+      }
+    ]
+  }
+};
+
+let currentDifficulty = 'easy';
+let currentQuestionIndex = 0;
+let currentQuestionData = null;
+
+window.updateStarsDisplay = function updateStarsDisplay() {
+    let stars = localStorage.getItem('sparky_stars') || '0';
+    document.getElementById('stars-display').innerHTML = `<span class="material-symbols-outlined">star</span> ${stars}`;
+}
+
+window.saveProgress = function saveProgress() {
+    localStorage.setItem('sparky_quizTime', JSON.stringify({
+        difficulty: currentDifficulty,
+        questionIndex: currentQuestionIndex
+    }));
+}
+
+window.initGame = function initGame() {
+    let saved = localStorage.getItem('sparky_quizTime');
+    if (saved) {
+        let data = JSON.parse(saved);
+        currentDifficulty = data.difficulty;
+        if(currentDifficulty === 'class1' || currentDifficulty === 'easy') currentDifficulty = 'easy';
+        if(currentDifficulty === 'class2' || currentDifficulty === 'medium') currentDifficulty = 'medium';
+        if(currentDifficulty === 'class3' || currentDifficulty === 'hard') currentDifficulty = 'hard';
+
+        currentQuestionIndex = data.questionIndex;
+    }
+    updateStarsDisplay();
+    loadQuestion();
+}
+
+window.loadQuestion = function loadQuestion() {
+    let studentClass = localStorage.getItem('sparky_grade') || "1";
+    studentClass = studentClass.replace('Class', '').trim();
+    const questions = QUIZ_BANK[studentClass][currentDifficulty];
+    
+    
+    const btn1 = document.getElementById('btn-class1');
+    const btn2 = document.getElementById('btn-class2');
+    const btn3 = document.getElementById('btn-class3');
+
+    const activeClass = "flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold bg-primary-container text-on-primary-container inner-glow transition-all";
+    const inactiveClass = "flex-1 py-3 px-4 rounded-md font-label-bold text-label-bold text-on-surface-variant transition-all";
+
+    if (btn1) btn1.className = activeClass;
+    if (btn2) btn2.className = currentDifficulty === 'medium' || currentDifficulty === 'hard' ? activeClass : inactiveClass;
+    if (btn3) btn3.className = currentDifficulty === 'hard' ? activeClass : inactiveClass;
+
+    if (currentDifficulty === 'easy') {
+        if (btn1) btn1.innerHTML = `Easy <span class="block text-xs opacity-80">${currentQuestionIndex + 1}/${questions.length} Quizzes</span>`;
+        if (btn2) btn2.innerHTML = `Medium <span class="block text-xs opacity-80">Locked</span>`;
+        if (btn3) btn3.innerHTML = `Hard <span class="block text-xs opacity-80">Locked</span>`;
+    } else if (currentDifficulty === 'medium') {
+        if (btn1) btn1.innerHTML = `Easy <span class="block text-xs opacity-80">${questions.length}/${questions.length} Quizzes</span>`;
+        if (btn2) btn2.innerHTML = `Medium <span class="block text-xs opacity-80">${currentQuestionIndex + 1}/${questions.length} Quizzes</span>`;
+        if (btn3) btn3.innerHTML = `Hard <span class="block text-xs opacity-80">Locked</span>`;
+    } else if (currentDifficulty === 'hard') {
+        if (btn1) btn1.innerHTML = `Easy <span class="block text-xs opacity-80">${questions.length}/${questions.length} Quizzes</span>`;
+        if (btn2) btn2.innerHTML = `Medium <span class="block text-xs opacity-80">${questions.length}/${questions.length} Quizzes</span>`;
+        if (btn3) btn3.innerHTML = `Hard <span class="block text-xs opacity-80">${currentQuestionIndex + 1}/${questions.length} Quizzes</span>`;
+    }
+    
+    // Removing old level-title updates since we set innerHTML directly
+    
+    if (currentDifficulty === 'medium' || currentDifficulty === 'hard') {
+        document.getElementById('prog-circle-medium').className = "w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold bubbly-shadow";
+        document.getElementById('prog-line-1').className = "h-2 flex-1 bg-primary-container rounded-full";
+        document.getElementById('prog-line-2').className = "h-2 flex-1 bg-primary-container rounded-full progress-candy-stripe";
+    }
+    if (currentDifficulty === 'hard') {
+        document.getElementById('prog-circle-hard').className = "w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold bubbly-shadow";
+        document.getElementById('prog-line-2').className = "h-2 flex-1 bg-primary-container rounded-full";
+    }
+
+    if (currentQuestionIndex >= questions.length) {
+        levelUp();
+        return;
+    }
+
+    currentQuestionData = questions[currentQuestionIndex];
+    
+    
+    
+    const progressPercent = (currentQuestionIndex / questions.length) * 100;
+    
+    // Update progress bar
+    document.querySelector('.w-32 .h-full').style.width = `${progressPercent}%`;
+
+    const imgContainer = document.getElementById('subject-emoji-container');
+    imgContainer.innerHTML = currentQuestionData.emoji;
+    
+    const questionContainer = document.getElementById('question-container');
+    questionContainer.innerHTML = currentQuestionData.question;
+    
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+    
+    let options = [...currentQuestionData.options];
+    options.sort(() => Math.random() - 0.5); // Shuffle
+    
+    options.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.className = "group bg-white border-2 border-outline-variant py-4 px-6 rounded-xl bubbly-shadow transition-all active:translate-y-2 active:shadow-none select-none";
+        btn.onclick = () => handleSelect(btn, opt);
+        btn.innerHTML = `<span class="font-headline-md text-primary block group-active:scale-95 transition-transform">${opt}</span>`;
+        optionsContainer.appendChild(btn);
+    });
+}
+
+window.handleSelect = function handleSelect(btn, word) {
+    // Visual feedback for selection
+    if(word === currentQuestionData.correct) {
+        btn.classList.add('bg-tertiary-container', 'border-tertiary');
+        
+        // Disable all buttons
+        const allBtns = document.getElementById('options-container').querySelectorAll('button');
+        allBtns.forEach(b => b.onclick = null);
+        
+        // Trigger success modal overlay
+        setTimeout(() => {
+            const winFeedback = document.createElement('div');
+            winFeedback.className = "fixed inset-0 pointer-events-none flex items-center justify-center z-[100] bg-on-surface/30 backdrop-blur-sm transition-all";
+        let trophies = JSON.parse(localStorage.getItem('klps_trophies') || '{}');
+        if (!trophies['math_whiz']) {
+            trophies['math_whiz'] = true;
+            localStorage.setItem('klps_trophies', JSON.stringify(trophies));
+        }
+        if (!trophies['first_steps']) {
+            trophies['first_steps'] = true;
+            localStorage.setItem('klps_trophies', JSON.stringify(trophies));
+        }
+
+            winFeedback.innerHTML = `
+                <div class="bg-white p-8 md:p-12 rounded-3xl bubbly-shadow border-4 border-tertiary flex flex-col items-center animate-bounce mx-4">
+                    <span class="text-6xl md:text-8xl mb-2">🎉</span>
+                    <h2 class="font-display-lg text-tertiary mt-2 text-center">Great Job!</h2>
+                </div>
+            `;
+            document.body.appendChild(winFeedback);
+            
+            setTimeout(() => {
+                winFeedback.remove();
+                
+                let stars = parseInt(localStorage.getItem('sparky_stars') || '0');
+                localStorage.setItem('sparky_stars', stars + 1);
+                
+                // Track problems solved for achievements
+                let probsSolved = parseInt(localStorage.getItem('klps_problems_solved') || '0');
+                localStorage.setItem('klps_problems_solved', probsSolved + 1);
+                
+                // Speedy Learner unlocks at 20 correct answers
+                if (probsSolved + 1 >= 20) {
+                    let trophies = JSON.parse(localStorage.getItem('klps_trophies') || '{}');
+                    trophies['speedy_learner'] = true;
+                    localStorage.setItem('klps_trophies', JSON.stringify(trophies));
+                }
+
+                let masteryData = JSON.parse(localStorage.getItem('mastery_data') || '{"english": 0, "math": 0, "evs": 0}');
+                masteryData['evs'] = Math.min(100, masteryData['evs'] + 5);
+                localStorage.setItem('mastery_data', JSON.stringify(masteryData));
+                let weeklyData = JSON.parse(localStorage.getItem('weekly_stars') || '[0,0,0,0,0,0,0]');
+                let dayIndex = new Date().getDay() - 1; 
+                if (dayIndex < 0) dayIndex = 6;
+                weeklyData[dayIndex] = Math.min(100, weeklyData[dayIndex] + 5);
+                localStorage.setItem('weekly_stars', JSON.stringify(weeklyData));
+                updateStarsDisplay();
+                
+                currentQuestionIndex++;
+                saveProgress();
+                loadQuestion();
+            }, 1500);
+        }, 500);
+    } else {
+        btn.classList.add('bg-error-container', 'border-error');
+        let struggles = JSON.parse(localStorage.getItem('klps_struggles') || '[]');
+        struggles.push({ subject: 'Mathematics', topic: "Arithmetic", timestamp: Date.now() });
+        localStorage.setItem('klps_struggles', JSON.stringify(struggles));
+
+        setTimeout(() => {
+            btn.classList.remove('bg-error-container', 'border-error');
+        }, 500);
+    }
+}
+
+window.levelUp = function levelUp() {
+    let nextDiff = '';
+    let nextDiffDisplay = '';
+    let isComplete = false;
+    
+    if (currentDifficulty === 'easy') {
+        nextDiff = 'medium';
+        nextDiffDisplay = 'Medium';
+        document.getElementById('btn-class2').classList.remove('text-on-surface-variant');
+        document.getElementById('btn-class2').classList.add('bg-primary-container', 'text-on-primary-container', 'inner-glow');
+        document.getElementById('btn-class2').innerHTML = 'Medium <span class="block text-xs opacity-80">0/20 Quizzes</span>';
+        document.getElementById('prog-circle-medium').classList.remove('bg-surface-variant', 'text-on-surface-variant', 'border-2', 'border-outline-variant');
+        document.getElementById('prog-circle-medium').classList.add('bg-primary-container', 'text-on-primary-container', 'bubbly-shadow');
+        document.getElementById('prog-line-1').classList.remove('progress-candy-stripe');
+        document.getElementById('prog-line-2').classList.add('progress-candy-stripe');
+    } else if (currentDifficulty === 'medium') {
+        nextDiff = 'hard';
+        nextDiffDisplay = 'Hard';
+        document.getElementById('btn-class3').classList.remove('text-on-surface-variant');
+        document.getElementById('btn-class3').classList.add('bg-primary-container', 'text-on-primary-container', 'inner-glow');
+        document.getElementById('btn-class3').innerHTML = 'Hard <span class="block text-xs opacity-80">0/20 Quizzes</span>';
+        document.getElementById('prog-circle-hard').classList.remove('bg-surface-variant', 'text-on-surface-variant', 'border-2', 'border-outline-variant');
+        document.getElementById('prog-circle-hard').classList.add('bg-primary-container', 'text-on-primary-container', 'bubbly-shadow');
+        document.getElementById('prog-line-2').classList.remove('progress-candy-stripe');
+    } else {
+        isComplete = true;
+    }
+
+    const modal = document.createElement('div');
+    modal.className = "fixed inset-0 z-[100] bg-on-surface/60 backdrop-blur-sm flex items-center justify-center transition-all";
+    
+    if (isComplete) {
+        modal.innerHTML = `
+            <div class="bg-surface-container-lowest p-8 rounded-3xl border-4 border-primary text-center shadow-[0_8px_0_0_#7c5800] max-w-sm w-full mx-4 transform animate-bounce">
+                <div class="w-24 h-24 bg-primary-container rounded-full mx-auto flex items-center justify-center mb-6">
+                    <span class="text-6xl">🏆</span>
+                </div>
+                <h2 class="font-display-lg-mobile text-primary mb-2">You Won!</h2>
+                <p class="font-body-lg text-on-surface-variant mb-8">You finished all questions. You are a quiz champion!</p>
+                <button id="finish-game-btn" class="w-full bg-primary text-white font-headline-md py-4 rounded-xl shadow-[0_4px_0_0_#5e4200] active:translate-y-1 active:shadow-none transition-all">
+                    Back to Games
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById('finish-game-btn').addEventListener('click', () => {
+            localStorage.setItem('sparky_quizTime', JSON.stringify({ difficulty: 'easy', questionIndex: 0 }));
+            window.location.href = 'learning_path.html';
+        });
+    } else {
+        modal.innerHTML = `
+            <div class="bg-surface-container-lowest p-8 rounded-3xl border-4 border-tertiary text-center shadow-[0_8px_0_0_#006d36] max-w-sm w-full mx-4 transform animate-bounce">
+                <div class="w-24 h-24 bg-tertiary-container rounded-full mx-auto flex items-center justify-center mb-6">
+                    <span class="text-6xl">🎉</span>
+                </div>
+                <h2 class="font-display-lg-mobile text-tertiary mb-2">Level Up!</h2>
+                <p class="font-body-lg text-on-surface-variant mb-8">You unlocked ${nextDiffDisplay} quizzes!</p>
+                <button id="next-level-btn" class="w-full bg-tertiary text-white font-headline-md py-4 rounded-xl shadow-[0_4px_0_0_#005227] active:translate-y-1 active:shadow-none transition-all">
+                    Continue
+                </button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById('next-level-btn').addEventListener('click', () => {
+            modal.remove();
+            currentDifficulty = nextDiff;
+            currentQuestionIndex = 0;
+            saveProgress();
+            loadQuestion();
+        });
+    }
+}
+
+initGame();
+
+
+  </script>
+</body>
+</html>

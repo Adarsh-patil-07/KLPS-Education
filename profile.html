@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="google" content="notranslate" />
+<title>KLPS Pangire (A) Dashboard</title>
+
+
+
+
+
+
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="bg-background text-on-surface pb-48">
+
+<!-- TopAppBar -->
+<header class="bg-surface-container-low border-b-4 border-surface-variant shadow-[0_4px_0_0_rgba(221,228,230,1)] w-full top-0 px-container-margin py-4 fixed z-50">
+<div class="flex justify-between items-center w-full px-container-margin max-w-screen-xl mx-auto">
+<div class="flex items-center gap-2 md:gap-4 flex-1 min-w-0">
+<h1 class="font-display-lg-mobile text-headline-md md:text-display-lg-mobile truncate bg-gradient-to-r from-primary to-primary-container text-transparent bg-clip-text drop-shadow-sm">KLPS Pangire (A)</h1>
+</div>
+
+<div id="lang-toggle" onclick="toggleLanguage()" class="flex items-center gap-1 bg-surface-container-high text-on-surface-variant px-3 py-2 rounded-xl font-bold shadow-[0_4px_0_0_#dde4e6] active:translate-y-1 active:shadow-none transition-all cursor-pointer mr-2">
+    <span class="material-symbols-outlined text-lg">language</span>
+    <span id="lang-text" class="text-sm">EN</span>
+</div>
+<div onclick="openTrophyModal()" class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-bold shadow-[0_4px_0_0_#6b4c00] active:translate-y-1 active:shadow-none transition-all cursor-pointer">
+<span class="text-xl">⭐</span>
+<span id="stars-display" class="font-label-bold text-label-bold">125</span>
+</div>
+</div>
+</header>
+<main class="mt-24 px-container-margin max-w-screen-xl mx-auto space-y-5 animate-in fade-in duration-500 pb-20">
+    
+    
+    <!-- <span id="t-student-details">Student Details</span> Card -->
+    <section class="bg-surface-container-lowest rounded-lg border-2 border-surface-variant p-6 bubbly-shadow">
+        <h3 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
+            Student Details
+        </h3>
+        <div class="space-y-4">
+            <div class="flex justify-between items-center py-2 border-b-2 border-surface-variant">
+                <span class="font-label-bold text-on-surface-variant" id="t-name">Name</span>
+                <span id="student-name-display" class="font-bold text-lg">Student</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b-2 border-surface-variant">
+                <span class="font-label-bold text-on-surface-variant" id="t-class">Current Class</span>
+                <span id="student-class-display" class="font-bold text-lg">Class 1</span>
+            </div>
+            <div class="flex justify-between items-center py-2">
+                <span class="font-label-bold text-on-surface-variant" id="t-stars">Total Stars</span>
+                <div class="flex items-center gap-1">
+                    <span class="text-xl">⭐</span>
+                    <span class="font-bold text-lg text-primary" id="profile-stars">125</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- About App Card -->
+    <section class="bg-surface-container-lowest rounded-lg border-2 border-surface-variant p-6 bubbly-shadow">
+        <h3 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">info</span>
+            <span id="t-about-app">About App</span>
+        </h3>
+        <div class="space-y-4">
+            <div class="flex justify-between items-center py-2 border-b-2 border-surface-variant">
+                <span class="font-label-bold text-on-surface-variant" id="t-app-name">App Name</span>
+                <span class="font-bold text-lg">KLPS Pangire Learner</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b-2 border-surface-variant">
+                <span class="font-label-bold text-on-surface-variant" id="t-principle">Principle</span>
+                <span class="font-bold text-lg">Sunanda Patil</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b-2 border-surface-variant">
+                <span class="font-label-bold text-on-surface-variant" id="t-developer">Developer</span>
+                <span class="font-bold text-lg">Adarsh Patil</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b-2 border-surface-variant">
+                <span class="font-label-bold text-on-surface-variant" id="t-version">Version</span>
+                <span class="font-bold text-lg">1.0.0</span>
+            </div>
+            <div class="py-2">
+                <p class="text-on-surface-variant leading-relaxed text-sm" id="t-desc">
+                    A fun and interactive educational platform designed to make learning grammar, spelling, and general knowledge exciting for primary school students.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-1 pt-1 bg-white border-t-4 border-surface-variant">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant group transition-colors" href="learning_path.html" >
+<div class="px-4 py-0.5 rounded-full mb-0 transition-all group-active:scale-95">
+<span class="material-symbols-outlined text-xl">home</span>
+</div>
+<span class="font-bold text-[10px]" id="t-nav-home">Home</span>
+</a>
+
+<!-- Progress -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant group transition-colors" href="progress.html" >
+<div class="px-4 py-0.5 rounded-full mb-0 transition-all group-active:scale-95">
+<span class="material-symbols-outlined text-xl">leaderboard</span>
+</div>
+<span class="font-bold text-[10px]" id="t-nav-progress">Progress</span>
+</a>
+
+<!-- Profile (Active) -->
+<a class="flex flex-col items-center justify-center text-primary group" href="profile.html" >
+<div class="px-4 py-0.5 bg-primary-container rounded-full mb-0 border-2 border-primary/20 transition-transform group-active:scale-95">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+
+<span class="font-bold text-[10px]" id="t-nav-profile">Profile</span>
+</a>
+</nav>
+
+
+
+
+  <script>
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    let stars = localStorage.getItem('sparky_stars') || '0';
+    document.getElementById('stars-display').innerText = stars;
+    if (document.getElementById('profile-stars')) {
+        document.getElementById('profile-stars').innerText = stars;
+    }
+
+    let studentName = localStorage.getItem('sparky_name') || 'Student';
+    let studentClass = localStorage.getItem('sparky_grade') || 'Class 1';
+    
+    let nameEl = document.getElementById('student-name-display');
+    if (nameEl) nameEl.innerText = studentName;
+    
+    let classEl = document.getElementById('student-class-display');
+    if (classEl) classEl.innerText = studentClass;
+    
+});
+
+
+  
+</script>
+<script type="module" src="./lang.js"></script>
+
+<!-- Trophy Room Modal -->
+<div id="trophy-modal" class="hidden fixed inset-0 z-[100] bg-on-surface/60 backdrop-blur-sm flex items-center justify-center transition-all p-4">
+    <div class="bg-white/[0.96] p-6 md:p-8 rounded-3xl border-4 border-primary shadow-[0_8px_0_0_#6b4c00] max-w-md w-full mx-auto transform animate-in zoom-in-95 duration-200">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="font-headline-md text-headline-md flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+                <span data-en="Trophy Room">Trophy Room</span>
+            </h3>
+            <button onclick="closeTrophyModal()" class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-lg">close</span>
+            </button>
+        </div>
+        <div class="grid grid-cols-3 gap-4" id="trophy-modal-grid">
+            <!-- Trophies injected here -->
+        </div>
+    </div>
+</div>
+
+<script type="module" src="./trophies.js"></script>
+</body>
+</html>

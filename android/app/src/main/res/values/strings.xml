@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sparky Learner</string>
+    <string name="title_activity_main">Sparky Learner</string>
+    <string name="package_name">com.klps.sparky</string>
+    <string name="custom_url_scheme">com.klps.sparky</string>
+</resources>

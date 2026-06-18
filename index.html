@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="google" content="notranslate" />
+<title>Welcome to KLPS Pangire (A)</title>
+<meta property="og:title" content="KLPS Pangire (A)" />
+<meta property="og:description" content="A fun and interactive educational platform designed to make learning grammar, spelling, and general knowledge exciting for primary school students." />
+<meta property="og:image" content="./assets/preview_klps.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="KLPS Pangire (A)" />
+<meta name="twitter:description" content="A fun and interactive educational platform designed to make learning grammar, spelling, and general knowledge exciting for primary school students." />
+<meta name="twitter:image" content="./assets/preview_klps.png" />
+
+
+
+
+
+
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+
+    <script>
+        // Auto-login check
+        if (localStorage.getItem('sparky_name')) {
+            window.location.href = 'learning_path.html';
+        }
+    </script>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start pb-20">
+
+<!-- Background Decoration -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+
+</div>
+<!-- Header Section (Implicit suppression of TopAppBar for focus) -->
+<header class="w-full max-w-xl px-container-margin py-8 text-center mx-auto">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-2 animate-float">
+            KLPS Pangire (A)
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+            Let's start your big adventure!
+        </p>
+</header>
+<main class="w-full max-w-xl px-container-margin space-y-8 mx-auto">
+<!-- Name Input Section -->
+<section class="space-y-4">
+<label class="font-headline-md text-headline-md text-on-surface block ml-2">What's your name?</label>
+<div class="relative group">
+<input id="student-name" class="w-full bg-surface-container-lowest border-4 border-surface-variant rounded-lg p-6 font-body-lg text-body-lg focus:border-primary-container focus:ring-0 outline-none tactile-card transition-all" placeholder="Type your name here..." type="text"/>
+<div class="absolute right-6 top-1/2 -translate-y-1/2 text-primary-container">
+<span class="material-symbols-outlined text-4xl" data-icon="edit_note">edit_note</span>
+</div>
+</div>
+</section>
+<!-- Grade Selection Grid -->
+<section class="space-y-4">
+<label class="font-headline-md text-headline-md text-on-surface block ml-2">Pick your class!</label>
+<div class="grid grid-cols-5 gap-3">
+<!-- Grade 1 -->
+<button class="group bg-tertiary-container text-on-tertiary-container rounded-lg p-4 h-20 flex flex-col items-center justify-center tactile-card standard-card border-4 border-transparent transition-transform" onclick="selectGrade(this)">
+<span class="font-display-lg-mobile text-display-lg-mobile">1</span>
+</button>
+<!-- Grade 2 -->
+<button class="group bg-secondary-container text-on-secondary-container rounded-lg p-4 h-20 flex flex-col items-center justify-center tactile-card standard-card border-4 border-transparent transition-transform" onclick="selectGrade(this)">
+<span class="font-display-lg-mobile text-display-lg-mobile">2</span>
+</button>
+<!-- Grade 3 -->
+<button class="group bg-primary-container text-on-primary-container rounded-lg p-4 h-20 flex flex-col items-center justify-center tactile-card standard-card border-4 border-transparent transition-transform" onclick="selectGrade(this)">
+<span class="font-display-lg-mobile text-display-lg-mobile">3</span>
+</button>
+<!-- Grade 4 -->
+<button class="group bg-secondary text-secondary-fixed rounded-lg p-4 h-20 flex flex-col items-center justify-center tactile-card standard-card border-4 border-transparent transition-transform" onclick="selectGrade(this)">
+<span class="font-display-lg-mobile text-display-lg-mobile text-white">4</span>
+</button>
+<!-- Grade 5 -->
+<button class="group bg-error text-error-container rounded-lg p-4 h-20 flex flex-col items-center justify-center tactile-card standard-card border-4 border-transparent transition-transform" onclick="selectGrade(this)">
+<span class="font-display-lg-mobile text-display-lg-mobile text-white">5</span>
+</button>
+</div>
+</section>
+<!-- Avatar Selection Section -->
+<section class="space-y-4">
+<label class="font-headline-md text-headline-md text-on-surface block ml-2">Choose your Hero!</label>
+<div class="grid grid-cols-3 gap-4">
+<!-- Avatar 1 -->
+<button class="avatar-option group relative aspect-square bg-surface-container-lowest border-4 border-surface-variant rounded-full flex items-center justify-center tactile-card overflow-hidden transition-all p-2" onclick="selectAvatar(this)">
+<img alt="Cute superhero kid" class="w-full h-full object-contain" data-alt="A joyful and energetic primary school child avatar wearing a bright red superhero cape and a friendly smile, rendered in a colorful 3D vinyl toy style with soft rounded edges and bright high-key studio lighting for a playful educational app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlnLBoIXWa_FQ8HAfXJ8F22fK5rsECyHUJdE6CZlB7ZpogmGo5_gfv5terrG2glm1MYGsXhXATpZEo_RzG5rtiQFAJgrqPtkrJeiQRCTjiibeNSB8zSvLaidkgrs7ppu1T0rl58M9R_dg5uRz42RukfYBgsqSSJ08xP6QE6CiC9asNyGur45zWdzhJqpnKPSJmPXCeYZRiSinXCe5fAlPynKhThaASCawnqZ5KXTmlcTZuttNcxVxvYaj8nNRe-BP82Ka2pTHYtDiU"/>
+</button>
+<!-- Avatar 2 -->
+<button class="avatar-option group relative aspect-square bg-surface-container-lowest border-4 border-surface-variant rounded-full flex items-center justify-center tactile-card overflow-hidden transition-all p-2" onclick="selectAvatar(this)">
+<img alt="Cheerful bear" class="w-full h-full object-contain" data-alt="A friendly cartoon animal character, a soft brown bear with large expressive eyes and a playful yellow hat, designed in a tactile neomorphic style with subtle inner glows and soft shadows, appearing physically interactable against a clean light mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY4s7bcxHA6wtShP-FNHebTv4BNxYc45hNCCC8_pJ1thjTApyTdXp5lm7G0wirp2BNudDvUQuLpRKxz7lj4Cdo-FvWoSMB2hFa45cyP3ttJz_vlzrt7_WUuT64DK7b8X_MSpAgZqSkOz5eSrtT6Q7cQHzC1EghUi8UkEM9Pu1N8sgn-JBFO6c3aMsp300gP8KOtb2DdbxtStWRS6DOZdIewtmk_lOcaP8jkqvGTURkSI1KsxDIZlAR7qtDNxFdILEKqd5hwqOQZMpf"/>
+</button>
+<!-- Avatar 3 -->
+<button class="avatar-option group relative aspect-square bg-surface-container-lowest border-4 border-surface-variant rounded-full flex items-center justify-center tactile-card overflow-hidden transition-all p-2" onclick="selectAvatar(this)">
+<img alt="Space explorer" class="w-full h-full object-contain" data-alt="A cute child avatar dressed in a futuristic astronaut suit with vibrant teal accents and a clear glass helmet, rendered in a cheerful flat-illustration style that emphasizes bright primary colors and simple geometric shapes for a modern educational user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdhT_FBOUrUk7pOmamKJsKwbceLLgrhISELjHLJYKU2hgEDnLdREZdiw-4xqSzZGaszEk66vUpxQU-Ke6UxHUXC1y4tcJIhH8dvwGC9pDhQnIhqgnRFRTR5KTNZtyRrJRxd0ZynohNWN8z0dScqvWskdBYi_tgPcqoTquplUjaYd9KTR9keFyOJCXC5lyhUX8hsv-9f3FyQB_rxVGP5Vp4kySawOIVcemfhtXJv_-PEQyRCZ73nTOdzYy9sq0xl0u0IHr9w3pBz-KU"/>
+</button>
+<!-- Avatar 4 -->
+<button class="avatar-option group relative aspect-square bg-surface-container-lowest border-4 border-surface-variant rounded-full flex items-center justify-center tactile-card overflow-hidden transition-all p-2" onclick="selectAvatar(this)">
+<img alt="Nature sprite" class="w-full h-full object-contain" data-alt="A whimsical garden-themed character with leaf-like hair and vibrant green clothing, holding a small glowing flower, designed with soft textures and bright lighting to evoke a sense of curiosity and growth in a primary school learning environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBil6rhxzgazXJKTJV-63jDtXtDqvlthOvxDtxzF--yfYBjue57t1ks4GyMs9NsvGShcQDB9Mx7GBTVrER9w_RhPK8jMOqgIb8JNr-crKTIAFL8lsenKQ50UjkOmHmjKldeQ3W-6AEwbl0KEcTnqqC6GyREfsUyuFSYwUxA17AldFADUvHQMDG3Q9b-aAJDF8jN2L4IiHptXDo3fiQgTqEIdGZ3TbhXjMN9Z-H6I-FzU9m4VmyJn5f4YpCBqwJ182tz-U-gc8-og2uH"/>
+</button>
+<!-- Avatar 5 -->
+<button class="avatar-option group relative aspect-square bg-surface-container-lowest border-4 border-surface-variant rounded-full flex items-center justify-center tactile-card overflow-hidden transition-all p-2" onclick="selectAvatar(this)">
+<img alt="Little Robot" class="w-full h-full object-contain" data-alt="A friendly, rounded blue robot character with digital screen eyes displaying a happy emoji face, featuring polished metallic surfaces and soft neon glows, rendered in a bubbly 3D style that feels tactile and responsive for young users." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTc2fXdY8LamFKab5kOPACA1j7od2OIcxm1SF7cq8aPC2a3kid4jthA-c5Zo-__3uE8SMNQoy9le89AbbAQ3SBfTkM9JdNTIdiZu_-YSuR0gJnc1SSU53e69VR61y6t2siFm6HgFMPzT9bGJ1fHjgmvAnl4lnVdBdlVnWAaXNIkvqh7IbEN4MZvtJKLLNnW_Pvol4LSueiyVX_zVCnkjBP9_xnKW_hlvaV22OpqQZ5b1yps2yRe6uGPDxSHXOBu6sreHwR5yc_80uj"/>
+</button>
+<!-- Avatar 6 -->
+<button class="avatar-option group relative aspect-square bg-surface-container-lowest border-4 border-surface-variant rounded-full flex items-center justify-center tactile-card overflow-hidden transition-all p-2" onclick="selectAvatar(this)">
+<img alt="Cool Cat" class="w-full h-full object-contain" data-alt="A stylish cartoon cat wearing oversized colorful sunglasses and a striped shirt, illustrated with bold outlines and vibrant saturated colors, embodying a playful and supportive study-buddy aesthetic for children aged six to eleven." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2UZA-QdYUloAPlN_D1xLRhPdbloah92CylkoKTCnuDy0GBLKIbLj15d-5v67_YDFQ1G7XFOKDcwvX-IxWxhCYQiwglVMFNLJJ81uHcwgTlGgppIvKAFy3-a6P3HQZfQO38-Rf3ERqrEjMldIWodLNDsKqDCOR2dRfnXvij4-j7dji5sM0SiyhBLWz07kLiwyOqn5wNa43mcnkT4cnMXS3e8wh8zDo8jzMFgk_e969VT6MuIlL07jVpgB-m82B2GU8JgbDO9EEBZg0"/>
+</button>
+</div>
+</section>
+<!-- Submit Button -->
+<div class="pt-8 pb-12">
+<button onclick="validateAndStart()" class="w-full bg-primary-container text-on-primary-container font-display-lg-mobile text-display-lg-mobile py-6 rounded-lg tactile-button inner-glow candy-stripe relative overflow-hidden group">
+<span class="relative z-10">Start Learning!</span>
+<div class="absolute inset-0 bg-white opacity-0 transition-opacity"></div>
+</button>
+</div>
+</main>
+
+<!-- Custom Alert Modal -->
+<div id="custom-alert" class="fixed inset-0 z-50 bg-on-surface/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-surface-container-lowest p-8 rounded-3xl border-4 border-error text-center shadow-[0_8px_0_0_#ba1a1a] max-w-sm w-full mx-4 transform scale-90 transition-transform duration-300" id="custom-alert-box">
+        <div class="w-20 h-20 bg-error-container rounded-full mx-auto flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-error text-5xl">info</span>
+        </div>
+        <h2 class="font-display-lg-mobile text-error mb-2">Oops!</h2>
+        <p id="custom-alert-message" class="font-body-lg text-on-surface-variant mb-8">Please tell us your name!</p>
+        <button onclick="closeCustomAlert()" class="w-full bg-error text-white font-headline-md py-4 rounded-xl shadow-[0_4px_0_0_#93000a] active:translate-y-1 active:shadow-none transition-all">
+            Got it!
+        </button>
+    </div>
+</div>
+
+<!-- Micro-interactions Script -->
+
+
+  <script>
+
+
+        let selectedGrade = null;
+        let selectedAvatar = null;
+
+window.selectGrade = function selectGrade(element) {
+            // Remove active class from all grade buttons
+            document.querySelectorAll('section:nth-of-type(2) button').forEach(btn => {
+                btn.classList.remove('selection-active');
+            });
+            // Add to current
+            element.classList.add('selection-active');
+            selectedGrade = element.innerText.replace('Class', '').trim();
+            
+            // Haptic-style feedback
+            element.style.transform = "scale(0.95)";
+            setTimeout(() => {
+                element.style.transform = "translateY(4px) scale(1)";
+            }, 100);
+        }
+
+window.selectAvatar = function selectAvatar(element) {
+            // Remove active class from all avatars
+            document.querySelectorAll('.avatar-option').forEach(btn => {
+                btn.classList.remove('selection-active');
+                btn.classList.remove('border-primary');
+            });
+            // Add to current
+            element.classList.add('selection-active');
+            selectedAvatar = element.querySelector('img').src;
+            
+            // Add celebratory effect
+            createConfetti(element);
+        }
+
+window.createConfetti = function createConfetti(element) {
+            const colors = ['#ffb800', '#00baff', '#4ade80', '#ba1a1a'];
+            for (let i = 0; i < 8; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '8px';
+                confetti.style.height = '8px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = '50%';
+                confetti.style.top = '50%';
+                confetti.style.pointerEvents = 'none';
+                
+                element.appendChild(confetti);
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 40 + Math.random() * 40;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                
+                const anim = confetti.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(${x}px, ${y}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 600,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                anim.onfinish = () => confetti.remove();
+            }
+        }
+
+window.showCustomAlert = function showCustomAlert(message) {
+            document.getElementById('custom-alert-message').innerText = message;
+            const modal = document.getElementById('custom-alert');
+            const box = document.getElementById('custom-alert-box');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            box.classList.remove('scale-90');
+            box.classList.add('scale-100');
+        }
+
+window.closeCustomAlert = function closeCustomAlert() {
+            const modal = document.getElementById('custom-alert');
+            const box = document.getElementById('custom-alert-box');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            box.classList.remove('scale-100');
+            box.classList.add('scale-90');
+        }
+
+window.validateAndStart = function validateAndStart() {
+            const name = document.getElementById('student-name').value.trim();
+            if (!name) {
+                showCustomAlert("Please tell us your name!");
+                return;
+            }
+            if (!selectedGrade) {
+                showCustomAlert("Please pick your class!");
+                return;
+            }
+            if (!selectedAvatar) {
+                showCustomAlert("Please choose your Hero!");
+                return;
+            }
+            
+            // Save data for other pages
+            localStorage.setItem('sparky_name', name);
+            localStorage.setItem('sparky_grade', selectedGrade);
+            localStorage.setItem('sparky_avatar', selectedAvatar);
+            
+            window.location.href = 'learning_path.html';
+        }
+    
+
+  </script>
+<script type="module" src="./lang.js"></script>
+</body>
+</html>
